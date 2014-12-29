@@ -23,9 +23,9 @@ class BlockchainInfo {
   function getBalance($address, Logger $logger, $is_received = false) {
     if ($is_received) {
       $logger->info("Need to get received balance rather than current balance");
-      $url = "https://blockchain.info/q/getreceivedbyaddress/" . urlencode($address) . "?confirmations=" . get_site_config('btc_confirmations');
+      $url = "https://blockchain.info/q/getreceivedbyaddress/" . urlencode($address) . "?confirmations=" . Config::get('btc_confirmations');
     } else {
-      $url = "https://blockchain.info/q/addressbalance/" . urlencode($address) . "?confirmations=" . get_site_config('btc_confirmations');
+      $url = "https://blockchain.info/q/addressbalance/" . urlencode($address) . "?confirmations=" . Config::get('btc_confirmations');
     }
 
     if (Config::get('blockchain_api_key', false)) {

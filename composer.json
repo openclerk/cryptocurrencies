@@ -7,8 +7,12 @@
     }
   },
   "require": {
+    "openclerk/config": "dev-master",
     "openclerk/currencies": "dev-master",
     "openclerk/apis": "dev-master",
     "monolog/monolog": "~1.11"
+  },
+  "require-dev": {
+    "soundasleep/component-tests": "dev-master"
   }
 }
