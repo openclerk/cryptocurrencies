@@ -1,0 +1,14 @@
+{
+  "name": "openclerk/cryptocurrencies",
+  "description": "Definitions and implementations of cryptocurrencies in Openclerk",
+  "autoload": {
+    "psr-4": {
+      "Cryptocurrency\\": "src"
+    }
+  },
+  "require": {
+    "openclerk/currencies": "dev-master",
+    "openclerk/apis": "dev-master",
+    "monolog/monolog": "~1.11"
+  }
+}
