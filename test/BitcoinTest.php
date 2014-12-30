@@ -43,6 +43,15 @@ class BitcoinTest extends \PHPUnit_Framework_TestCase {
 
   function testInvalidChecksum() {
     try {
+      $balance = $this->currency->getBalance("1MbknviVk2tD6rFvDdiS1W6w4NJSfKEJG5", $this->logger);
+      $this->fail("Expected failure");
+    } catch (\Openclerk\Currencies\BalanceException $e) {
+      $this->assertRegExp("/Checksum does not validate/i", $e->getMessage());
+    }
+  }
+
+  function testInvalidCharacter() {
+    try {
       $balance = $this->currency->getBalance("17eTMdqaFRSttfBYB9chKEzHubECZPTS60", $this->logger);
       $this->fail("Expected failure");
     } catch (\Openclerk\Currencies\BalanceException $e) {
