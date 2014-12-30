@@ -2,42 +2,36 @@
 
 namespace Cryptocurrency\Tests;
 
-use Monolog\Logger;
-use Openclerk\Config;
-use Cryptocurrency\Services\BlockchainInfo;
-
 /**
  * Test the implementation of Bitcoin.
  */
-class BitcoinTest extends \PHPUnit_Framework_TestCase {
+class BitcoinTest extends AbstractCryptocurrencyTest {
 
   function __construct() {
-    $this->logger = new Logger("test");
-    $this->currency = new \Cryptocurrency\Bitcoin();
-
-    Config::merge(array(
-      "btc_confirmations" => 6,
-      "get_contents_timeout" => 5,
-    ));
+    parent::__construct(new \Cryptocurrency\Bitcoin());
   }
 
-  function testValid() {
-    $this->assertTrue($this->currency->isValid("17eTMdqaFRSttfBYB9chKEzHubECZPTS6p"), "17eTMdqaFRSttfBYB9chKEzHubECZPTS6p should be valid");
-    $this->assertFalse($this->currency->isValid("invalid"), "invalid should be valid");
+  function getInvalidAddress() {
+    return "1MbknviVk2tD6rFvDdiS1W6w4NJSfKEJG5";
   }
 
-  function testBalance() {
-    $balance = $this->currency->getBalance("17eTMdqaFRSttfBYB9chKEzHubECZPTS6p", $this->logger);
+  function getBalanceAddress() {
+    return "17eTMdqaFRSttfBYB9chKEzHubECZPTS6p";
+  }
+
+  function doTestBalance($balance) {
     $this->assertEquals(0.0301, $balance);
   }
 
-  function testReceived() {
-    $balance = $this->currency->getBalance("17eTMdqaFRSttfBYB9chKEzHubECZPTS6p", $this->logger, true);
+  function doTestReceived($balance) {
     $this->assertEquals(0.0301, $balance);
   }
 
-  function testBalanceAtBlock() {
-    $balance = $this->currency->getBalanceAtBlock("17eTMdqaFRSttfBYB9chKEzHubECZPTS6p", $this->currency->getBlockCount($this->logger) - 100, $this->logger);
+  function getBalanceAtBlock() {
+    return $this->currency->getBlockCount($this->logger) - 100;
+  }
+
+  function doTestBalanceAtBlock($balance) {
     $this->assertEquals(0.0301, $balance);
   }
 
@@ -66,18 +60,6 @@ class BitcoinTest extends \PHPUnit_Framework_TestCase {
     } catch (\Openclerk\Currencies\BalanceException $e) {
       $this->assertRegExp("/Illegal character /i", $e->getMessage());
     }
-  }
-
-  function testBlockCount() {
-    $value = $this->currency->getBlockCount($this->logger);
-
-    $this->assertGreaterThan(100, $value);
-  }
-
-  function testDifficulty() {
-    $value = $this->currency->getDifficulty($this->logger);
-
-    $this->assertGreaterThan(1e6, $value);
   }
 
 }
