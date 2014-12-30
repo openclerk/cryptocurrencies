@@ -26,6 +26,12 @@ class BitcoinTest extends \PHPUnit_Framework_TestCase {
     $this->assertEquals(0.0301, $balance);
   }
 
+  function testReceived() {
+    $info = new BlockchainInfo();
+    $balance = $info->getBalance("17eTMdqaFRSttfBYB9chKEzHubECZPTS6p", $this->logger, true);
+    $this->assertEquals(0.0301, $balance);
+  }
+
   function testInvalidChecksum() {
     $info = new BlockchainInfo();
     try {
