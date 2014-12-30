@@ -1,9 +1,16 @@
-.explorer_name.explorer_btc {
-  padding-left: 20px;
-  background: url('../images/explorers/blockchain.png') 0 0 no-repeat;
+.explorer_name {
+  &.explorer_btc,
+  &.explorer_ltc {
+    padding-left: 20px;
+  }
+}
+
+.btc_address .inspect, .explorer_name.explorer_btc {
+  background: url('../images/explorers/blockchain.png') top left no-repeat;
   background-size: 16px 16px;
 }
-.btc_address .inspect {
-  background: url('../images/explorers/blockchain.png') top left no-repeat;
+
+.ltc_address .inspect, .explorer_name.explorer_ltc {
+  background: url('../images/explorers/litecoin.png') top left no-repeat;
   background-size: 16px 16px;
 }
