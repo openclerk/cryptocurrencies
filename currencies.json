@@ -1,4 +1,5 @@
 {
   "btc": "\\Cryptocurrency\\Bitcoin",
-  "ltc": "\\Cryptocurrency\\Litecoin"
+  "ltc": "\\Cryptocurrency\\Litecoin",
+  "bc1": "\\Cryptocurrency\\Blackcoin"
 }
