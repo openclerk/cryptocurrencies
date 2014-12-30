@@ -137,12 +137,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/openclerk/currencies.git",
-                "reference": "4276ac6f2dfe72892590b053212d2d9778468844"
+                "reference": "af97acf911ba03ae61df5057f3fcb593ba71fc80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openclerk/currencies/zipball/4276ac6f2dfe72892590b053212d2d9778468844",
-                "reference": "4276ac6f2dfe72892590b053212d2d9778468844",
+                "url": "https://api.github.com/repos/openclerk/currencies/zipball/af97acf911ba03ae61df5057f3fcb593ba71fc80",
+                "reference": "af97acf911ba03ae61df5057f3fcb593ba71fc80",
                 "shasum": ""
             },
             "require": {
@@ -155,7 +155,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2014-12-30 01:13:17"
+            "time": "2014-12-30 10:14:13"
         },
         {
             "name": "psr/log",

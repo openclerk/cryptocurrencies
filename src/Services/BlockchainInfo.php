@@ -17,29 +17,30 @@ use \Monolog\Logger;
 class BlockchainInfo {
 
   function getBalance($address, Logger $logger, $is_received = false) {
-    return $this->getBalanceAtBlock($address, null, $logger, $is_received);
+    return $this->getBalanceWithConfirmations($address, Config::get('btc_confirmations'), $logger, $is_received);
   }
 
   /**
+   * We can emulate this through confirmations.
    *
    * @param $block may be {@code null}
    * @throws {@link BalanceException} if something happened and the balance could not be obtained.
    */
   function getBalanceAtBlock($address, $block = null, Logger $logger, $is_received = false) {
-    if ($block !== null) {
-      // there is no API to switch from block# to confirmations, so we do this manually
-      $logger->info("Finding appropriate number of confirmations...");
-      $current_block = $this->getBlockCount($logger);
-      $confirmations = $current_block - $block;
-      if ($confirmations >= 120) {
-        $logger->warn("Cannot request more than 120 confirmations in the past with Blockchain");
-        $confirmations = 120;
-      }
-      $logger->info("Confirmations necessary: " . number_format($confirmations));
-    } else {
-      $confirmations = Config::get('btc_confirmations');
+    // there is no API to switch from block# to confirmations, so we do this manually
+    $logger->info("Finding appropriate number of confirmations from block $block...");
+    $current_block = $this->getBlockCount($logger);
+    $confirmations = $current_block - $block;
+    if ($confirmations >= 120) {
+      $logger->warn("Cannot request more than 120 confirmations in the past with Blockchain");
+      $confirmations = 120;
     }
+    $logger->info("Confirmations necessary: " . number_format($confirmations));
 
+    return $this->getBalanceWithConfirmations($address, $confirmations, $logger, $is_received);
+  }
+
+  function getBalanceWithConfirmations($address, $confirmations, Logger $logger, $is_received = false) {
     if ($is_received) {
       $logger->info("Need to get received balance rather than current balance");
       $url = "https://blockchain.info/q/getreceivedbyaddress/" . urlencode($address) . "?confirmations=" . $confirmations;

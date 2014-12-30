@@ -27,6 +27,10 @@ class BitcoinTest extends AbstractCryptocurrencyTest {
     $this->assertEquals(0.0301, $balance);
   }
 
+  function doTestBalanceWithConfirmations($balance) {
+    $this->assertEquals(0.0301, $balance);
+  }
+
   function getBalanceAtBlock() {
     return $this->currency->getBlockCount($this->logger) - 100;
   }

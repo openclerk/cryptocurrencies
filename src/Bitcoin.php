@@ -3,12 +3,18 @@
 namespace Cryptocurrency;
 
 use \Monolog\Logger;
+use \Openclerk\Currencies\Cryptocurrency;
+use \Openclerk\Currencies\BlockCurrency;
+use \Openclerk\Currencies\BlockBalanceableCurrency;
+use \Openclerk\Currencies\DifficultyCurrency;
+use \Openclerk\Currencies\ConfirmableCurrency;
+use \Openclerk\Currencies\ReceivedCurrency;
 
 /**
  * Represents the Bitcoin cryptocurrency.
  */
-class Bitcoin extends \Openclerk\Currencies\Cryptocurrency
-  implements \Openclerk\Currencies\BlockCurrency, \Openclerk\Currencies\DifficultyCurrency {
+class Bitcoin extends Cryptocurrency
+  implements BlockCurrency, DifficultyCurrency, ConfirmableCurrency, BlockBalanceableCurrency, ReceivedCurrency {
 
   function getCode() {
     return "btc";
@@ -64,7 +70,23 @@ class Bitcoin extends \Openclerk\Currencies\Cryptocurrency
   /**
    * @throws {@link BalanceException} if something happened and the balance could not be obtained.
    */
-  function getBalanceAtBlock($address, $block, Logger $logger) {
+  function getReceived($address, Logger $logger) {
+    $fetcher = new Services\BlockchainInfo();
+    return $fetcher->getBalance($address, $logger, true);
+  }
+
+  /**
+   * @throws {@link BalanceException} if something happened and the balance could not be obtained.
+   */
+  function getBalanceWithConfirmations($address, $confirmations, Logger $logger) {
+    $fetcher = new Services\BlockchainInfo();
+    return $fetcher->getBalanceWithConfirmations($address, $confirmations, $logger);
+  }
+
+  /**
+   * @throws {@link BalanceException} if something happened and the balance could not be obtained.
+   */
+  function getBalanceAtBlock($address, $block = null, Logger $logger) {
     $fetcher = new Services\BlockchainInfo();
     return $fetcher->getBalanceAtBlock($address, $block, $logger);
   }

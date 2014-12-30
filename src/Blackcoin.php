@@ -11,32 +11,36 @@ use \Openclerk\Currencies\ConfirmableCurrency;
 use \Openclerk\Currencies\ReceivedCurrency;
 
 /**
- * Represents the Litecoin cryptocurrency.
+ * Represents the Blackcoin cryptocurrency.
  */
-class Litecoin extends Cryptocurrency
-  implements BlockCurrency, BlockBalanceableCurrency, DifficultyCurrency, ReceivedCurrency {
+class Blackcoin extends Cryptocurrency
+  implements BlockCurrency, DifficultyCurrency, ReceivedCurrency {
 
   function getCode() {
-    return "ltc";
+    return "bc1";
   }
 
   function getName() {
-    return "Litecoin";
+    return "Blackcoin";
+  }
+
+  function getAbbr() {
+    return "BC";
   }
 
   function getURL() {
-    return "http://bitcoin.org/";
+    return "http://www.blackcoin.co/";
   }
 
   function getCommunityLinks() {
     return array(
-      "https://en.bitcoin.it/wiki/Litecoin" => "What is Litecoin?",
+      "http://www.blackcoin.co/" => "What is Blackcoin?",
     );
   }
 
   function isValid($address) {
     // based on is_valid_btc_address
-    if (strlen($address) >= 27 && strlen($address) <= 34 && (substr($address, 0, 1) == "L")
+    if (strlen($address) >= 27 && strlen($address) <= 34 && (substr($address, 0, 1) == "B")
         && preg_match("#^[A-Za-z0-9]+$#", $address)) {
       return true;
     }
@@ -48,22 +52,22 @@ class Litecoin extends Cryptocurrency
   }
 
   function getExplorerName() {
-    return "Litecoin Explorer";
+    return "BlackChain";
   }
 
   function getExplorerURL() {
-    return "http://explorer.litecoin.net/";
+    return "http://blackcha.in/";
   }
 
   function getBalanceURL($address) {
-    return sprintf("http://explorer.litecoin.net/address/%s", urlencode($address));
+    return sprintf("http://blackcha.in/address/%s", urlencode($address));
   }
 
   /**
    * @throws {@link BalanceException} if something happened and the balance could not be obtained.
    */
   function getBalance($address, Logger $logger) {
-    $fetcher = new Services\LitecoinExplorer();
+    $fetcher = new Services\Blackchain();
     return $fetcher->getBalance($address, $logger);
   }
 
@@ -71,25 +75,17 @@ class Litecoin extends Cryptocurrency
    * @throws {@link BalanceException} if something happened and the balance could not be obtained.
    */
   function getReceived($address, Logger $logger) {
-    $fetcher = new Services\LitecoinExplorer();
+    $fetcher = new Services\Blackchain();
     return $fetcher->getBalance($address, $logger, true);
   }
 
-  /**
-   * @throws {@link BalanceException} if something happened and the balance could not be obtained.
-   */
-  function getBalanceAtBlock($address, $block, Logger $logger) {
-    $fetcher = new Services\LitecoinExplorer();
-    return $fetcher->getBalanceAtBlock($address, $block, $logger);
-  }
-
   function getBlockCount(Logger $logger) {
-    $fetcher = new Services\LitecoinExplorer();
+    $fetcher = new Services\Blackchain();
     return $fetcher->getBlockCount($logger);
   }
 
   function getDifficulty(Logger $logger) {
-    $fetcher = new Services\LitecoinExplorer();
+    $fetcher = new Services\Blackchain();
     return $fetcher->getDifficulty($logger);
   }
 
