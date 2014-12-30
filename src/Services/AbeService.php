@@ -39,6 +39,14 @@ abstract class AbeService {
    * @throws {@link BalanceException} if something happened and the balance could not be obtained.
    */
   function getBalance($address, Logger $logger, $is_received = false) {
+    return $this->getBalanceAtBlock($address, null, $logger, $is_received);
+  }
+
+  /**
+   * @param $block may be {@code null}
+   * @throws {@link BalanceException} if something happened and the balance could not be obtained.
+   */
+  function getBalanceAtBlock($address, $block = null, Logger $logger, $is_received = false) {
 
     $code = $this->currency->getCode();
 
@@ -47,13 +55,14 @@ abstract class AbeService {
     }
 
     // do we have a block count?
-    $block = false;
-    if ($this->currency instanceof BlockCurrency) {
+    if ($this->currency instanceof BlockCurrency && !$block) {
       // TODO this needs to be cacheable between requests, otherwise we're going to end
       // up spamming services for block counts!
+      $logger->info("Finding most recent block count...");
       $block = $this->currency->getBlockCount($logger) - $this->confirmations;
-      $logger->info("Ignoring blocks after block " . number_format($block));
     }
+
+    $logger->info("Ignoring blocks after block " . number_format($block));
 
     // we can now request the HTML page
     $url = sprintf($this->url, $address);

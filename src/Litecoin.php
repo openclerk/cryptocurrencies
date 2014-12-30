@@ -29,8 +29,8 @@ class Litecoin extends \Openclerk\Currencies\Cryptocurrency
   }
 
   function isValid($address) {
-    // very simple check according to https://bitcoin.it/wiki/Address
-    if (strlen($address) >= 27 && strlen($address) <= 34 && ((substr($address, 0, 1) == "1" || substr($address, 0, 1) == "3"))
+    // based on is_valid_btc_address
+    if (strlen($address) >= 27 && strlen($address) <= 34 && (substr($address, 0, 1) == "L")
         && preg_match("#^[A-Za-z0-9]+$#", $address)) {
       return true;
     }
@@ -59,6 +59,14 @@ class Litecoin extends \Openclerk\Currencies\Cryptocurrency
   function getBalance($address, Logger $logger) {
     $fetcher = new Services\LitecoinExplorer();
     return $fetcher->getBalance($address, $logger);
+  }
+
+  /**
+   * @throws {@link BalanceException} if something happened and the balance could not be obtained.
+   */
+  function getBalanceAtBlock($address, $block, Logger $logger) {
+    $fetcher = new Services\LitecoinExplorer();
+    return $fetcher->getBalanceAtBlock($address, $block, $logger);
   }
 
   function getBlockCount(Logger $logger) {

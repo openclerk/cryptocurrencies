@@ -13,6 +13,7 @@ class BitcoinTest extends \PHPUnit_Framework_TestCase {
 
   function __construct() {
     $this->logger = new Logger("test");
+    $this->currency = new \Cryptocurrency\Bitcoin();
 
     Config::merge(array(
       "btc_confirmations" => 6,
@@ -20,22 +21,29 @@ class BitcoinTest extends \PHPUnit_Framework_TestCase {
     ));
   }
 
+  function testValid() {
+    $this->assertTrue($this->currency->isValid("17eTMdqaFRSttfBYB9chKEzHubECZPTS6p"), "17eTMdqaFRSttfBYB9chKEzHubECZPTS6p should be valid");
+    $this->assertFalse($this->currency->isValid("invalid"), "invalid should be valid");
+  }
+
   function testBalance() {
-    $info = new BlockchainInfo();
-    $balance = $info->getBalance("17eTMdqaFRSttfBYB9chKEzHubECZPTS6p", $this->logger);
+    $balance = $this->currency->getBalance("17eTMdqaFRSttfBYB9chKEzHubECZPTS6p", $this->logger);
     $this->assertEquals(0.0301, $balance);
   }
 
   function testReceived() {
-    $info = new BlockchainInfo();
-    $balance = $info->getBalance("17eTMdqaFRSttfBYB9chKEzHubECZPTS6p", $this->logger, true);
+    $balance = $this->currency->getBalance("17eTMdqaFRSttfBYB9chKEzHubECZPTS6p", $this->logger, true);
+    $this->assertEquals(0.0301, $balance);
+  }
+
+  function testBalanceAtBlock() {
+    $balance = $this->currency->getBalanceAtBlock("17eTMdqaFRSttfBYB9chKEzHubECZPTS6p", $this->currency->getBlockCount($this->logger) - 100, $this->logger);
     $this->assertEquals(0.0301, $balance);
   }
 
   function testInvalidChecksum() {
-    $info = new BlockchainInfo();
     try {
-      $balance = $info->getBalance("17eTMdqaFRSttfBYB9chKEzHubECZPTS60", $this->logger);
+      $balance = $this->currency->getBalance("17eTMdqaFRSttfBYB9chKEzHubECZPTS60", $this->logger);
       $this->fail("Expected failure");
     } catch (\Openclerk\Currencies\BalanceException $e) {
       $this->assertRegExp("/Illegal character /i", $e->getMessage());
@@ -43,9 +51,8 @@ class BitcoinTest extends \PHPUnit_Framework_TestCase {
   }
 
   function testInvalidAddress() {
-    $info = new BlockchainInfo();
     try {
-      $balance = $info->getBalance("invalid", $this->logger);
+      $balance = $this->currency->getBalance("invalid", $this->logger);
       $this->fail("Expected failure");
     } catch (\Openclerk\Currencies\BalanceException $e) {
       $this->assertRegExp("/Illegal character /i", $e->getMessage());
@@ -53,15 +60,13 @@ class BitcoinTest extends \PHPUnit_Framework_TestCase {
   }
 
   function testBlockCount() {
-    $info = new BlockchainInfo();
-    $value = $info->getBlockCount($this->logger);
+    $value = $this->currency->getBlockCount($this->logger);
 
     $this->assertGreaterThan(100, $value);
   }
 
   function testDifficulty() {
-    $info = new BlockchainInfo();
-    $value = $info->getDifficulty($this->logger);
+    $value = $this->currency->getDifficulty($this->logger);
 
     $this->assertGreaterThan(1e6, $value);
   }

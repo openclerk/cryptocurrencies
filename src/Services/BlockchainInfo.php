@@ -16,16 +16,35 @@ use \Monolog\Logger;
  */
 class BlockchainInfo {
 
+  function getBalance($address, Logger $logger, $is_received = false) {
+    return $this->getBalanceAtBlock($address, null, $logger, $is_received);
+  }
+
   /**
    *
+   * @param $block may be {@code null}
    * @throws {@link BalanceException} if something happened and the balance could not be obtained.
    */
-  function getBalance($address, Logger $logger, $is_received = false) {
+  function getBalanceAtBlock($address, $block = null, Logger $logger, $is_received = false) {
+    if ($block !== null) {
+      // there is no API to switch from block# to confirmations, so we do this manually
+      $logger->info("Finding appropriate number of confirmations...");
+      $current_block = $this->getBlockCount($logger);
+      $confirmations = $current_block - $block;
+      if ($confirmations >= 120) {
+        $logger->warn("Cannot request more than 120 confirmations in the past with Blockchain");
+        $confirmations = 120;
+      }
+      $logger->info("Confirmations necessary: " . number_format($confirmations));
+    } else {
+      $confirmations = Config::get('btc_confirmations');
+    }
+
     if ($is_received) {
       $logger->info("Need to get received balance rather than current balance");
-      $url = "https://blockchain.info/q/getreceivedbyaddress/" . urlencode($address) . "?confirmations=" . Config::get('btc_confirmations');
+      $url = "https://blockchain.info/q/getreceivedbyaddress/" . urlencode($address) . "?confirmations=" . $confirmations;
     } else {
-      $url = "https://blockchain.info/q/addressbalance/" . urlencode($address) . "?confirmations=" . Config::get('btc_confirmations');
+      $url = "https://blockchain.info/q/addressbalance/" . urlencode($address) . "?confirmations=" . $confirmations;
     }
 
     if (Config::get('blockchain_api_key', false)) {

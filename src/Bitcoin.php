@@ -61,6 +61,14 @@ class Bitcoin extends \Openclerk\Currencies\Cryptocurrency
     return $fetcher->getBalance($address, $logger);
   }
 
+  /**
+   * @throws {@link BalanceException} if something happened and the balance could not be obtained.
+   */
+  function getBalanceAtBlock($address, $block, Logger $logger) {
+    $fetcher = new Services\BlockchainInfo();
+    return $fetcher->getBalanceAtBlock($address, $block, $logger);
+  }
+
   function getBlockCount(Logger $logger) {
     $fetcher = new Services\BlockchainInfo();
     return $fetcher->getBlockCount($logger);

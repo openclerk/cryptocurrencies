@@ -13,6 +13,7 @@ class LitecoinTest extends \PHPUnit_Framework_TestCase {
 
   function __construct() {
     $this->logger = new Logger("test");
+    $this->currency = new \Cryptocurrency\Litecoin();
 
     Config::merge(array(
       "ltc_confirmations" => 6,
@@ -20,22 +21,34 @@ class LitecoinTest extends \PHPUnit_Framework_TestCase {
     ));
   }
 
+  function testValid() {
+    $this->assertTrue($this->currency->isValid("LbYmauLERxK1vyqJbB9J2MNsffsYkBSuVX"), "LbYmauLERxK1vyqJbB9J2MNsffsYkBSuVX should be valid");
+    $this->assertFalse($this->currency->isValid("invalid"), "invalid should be valid");
+  }
+
   function testBalance() {
-    $info = new LitecoinExplorer();
-    $balance = $info->getBalance("LbYmauLERxK1vyqJbB9J2MNsffsYkBSuVX", $this->logger);
+    $balance = $this->currency->getBalance("LbYmauLERxK1vyqJbB9J2MNsffsYkBSuVX", $this->logger);
     $this->assertEquals(1, $balance);
   }
 
   function testReceived() {
-    $info = new LitecoinExplorer();
-    $balance = $info->getBalance("LbYmauLERxK1vyqJbB9J2MNsffsYkBSuVX", $this->logger, true);
+    $balance = $this->currency->getBalance("LbYmauLERxK1vyqJbB9J2MNsffsYkBSuVX", $this->logger, true);
     $this->assertEquals(1, $balance);
   }
 
+  function testBalanceAtBlock() {
+    $balance = $this->currency->getBalanceAtBlock("LbYmauLERxK1vyqJbB9J2MNsffsYkBSuVX", 515900, $this->logger);
+    $this->assertEquals(1, $balance);
+  }
+
+  function testBalanceAtBlockZero() {
+    $balance = $this->currency->getBalanceAtBlock("LbYmauLERxK1vyqJbB9J2MNsffsYkBSuVX", 514900, $this->logger);
+    $this->assertEquals(0, $balance);
+  }
+
   function testInvalidChecksum() {
-    $info = new LitecoinExplorer();
     try {
-      $balance = $info->getBalance("LbYmauLERxK1vyqJbB9J2MNsffsYkBSuV1", $this->logger);
+      $balance = $this->currency->getBalance("LbYmauLERxK1vyqJbB9J2MNsffsYkBSuV1", $this->logger);
       $this->fail("Expected failure");
     } catch (\Openclerk\Currencies\BalanceException $e) {
       $this->assertRegExp("/Not a valid address/i", $e->getMessage());
@@ -43,9 +56,8 @@ class LitecoinTest extends \PHPUnit_Framework_TestCase {
   }
 
   function testInvalidAddress() {
-    $info = new LitecoinExplorer();
     try {
-      $balance = $info->getBalance("invalid", $this->logger);
+      $balance = $this->currency->getBalance("invalid", $this->logger);
       $this->fail("Expected failure");
     } catch (\Openclerk\Currencies\BalanceException $e) {
       $this->assertRegExp("/Not a valid address/i", $e->getMessage());
@@ -53,15 +65,13 @@ class LitecoinTest extends \PHPUnit_Framework_TestCase {
   }
 
   function testBlockCount() {
-    $info = new LitecoinExplorer();
-    $value = $info->getBlockCount($this->logger);
+    $value = $this->currency->getBlockCount($this->logger);
 
     $this->assertGreaterThan(100, $value);
   }
 
   function testDifficulty() {
-    $info = new LitecoinExplorer();
-    $value = $info->getDifficulty($this->logger);
+    $value = $this->currency->getDifficulty($this->logger);
 
     $this->assertGreaterThan(1e3, $value);
   }
