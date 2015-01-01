@@ -94,7 +94,7 @@ abstract class AbstractCryptocurrencyTest extends \PHPUnit_Framework_TestCase {
 
   function testDifficulty() {
     $value = $this->currency->getDifficulty($this->logger);
-    $this->assertGreaterThan(100, $value);
+    $this->assertGreaterThan(10, $value);
   }
 
 }

@@ -8,7 +8,7 @@ use \Openclerk\Currencies\BalanceException;
 use \Openclerk\Currencies\Currency;
 use \Openclerk\Currencies\BlockCurrency;
 
-abstract class AbeService {
+abstract class AbstractAbeService {
 
   function __construct(Currency $currency, $args) {
     $this->currency = $currency;
@@ -178,8 +178,8 @@ abstract class AbeService {
   }
 
   function getDifficulty(Logger $logger) {
-    if (!$this->block_url) {
-      throw new DifficultyException("No known block URL for currency '" . $this->currency->getCode() . "'");
+    if (!$this->difficulty_url) {
+      throw new DifficultyException("No known difficulty URL for currency '" . $this->currency->getCode() . "'");
     }
 
     $url = $this->difficulty_url;

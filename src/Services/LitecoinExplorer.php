@@ -4,7 +4,7 @@ namespace Cryptocurrency\Services;
 
 use \Openclerk\Currencies\Currency;
 
-class LitecoinExplorer extends AbeService {
+class LitecoinExplorer extends AbstractAbeService {
 
   function __construct() {
     parent::__construct(new \Cryptocurrency\Litecoin(), array(
