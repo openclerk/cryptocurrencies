@@ -1,7 +1,8 @@
 .explorer_name {
   &.explorer_btc,
   &.explorer_ltc,
-  &.explorer_bc1 {
+  &.explorer_bc1,
+  &.explorer_dgc {
     padding-left: 20px;
   }
 }
@@ -18,5 +19,10 @@
 
 .bc1_address .inspect, .explorer_name.explorer_bc1 {
   background: url('../images/explorers/blackchain.png') top left no-repeat;
+  background-size: 16px 16px;
+}
+
+.dgc_address .inspect, .explorer_name.explorer_dgc {
+  background: url('../images/explorers/blockr.png') top left no-repeat;
   background-size: 16px 16px;
 }
