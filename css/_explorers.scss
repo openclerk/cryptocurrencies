@@ -3,7 +3,8 @@
   &.explorer_ltc,
   &.explorer_bc1,
   &.explorer_dgc,
-  &.explorer_dog {
+  &.explorer_dog,
+  &.explorer_drk {
     padding-left: 20px;
   }
 }
@@ -30,5 +31,10 @@
 
 .dog_address .inspect, .explorer_name.explorer_dog {
   background: url('../images/explorers/dogechain.png') top left no-repeat;
+  background-size: 16px 16px;
+}
+
+.drk_address .inspect, .explorer_name.explorer_drk {
+  background: url('../images/explorers/darkcoin.png') top left no-repeat;
   background-size: 16px 16px;
 }

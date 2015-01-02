@@ -3,5 +3,6 @@
   "ltc": "\\Cryptocurrency\\Litecoin",
   "bc1": "\\Cryptocurrency\\Blackcoin",
   "dgc": "\\Cryptocurrency\\Digitalcoin",
-  "dog": "\\Cryptocurrency\\Dogecoin"
+  "dog": "\\Cryptocurrency\\Dogecoin",
+  "drk": "\\Cryptocurrency\\Darkcoin"
 }
