@@ -1,9 +1,10 @@
 {
-  "btc": "\\Cryptocurrency\\Bitcoin",
-  "ltc": "\\Cryptocurrency\\Litecoin",
   "bc1": "\\Cryptocurrency\\Blackcoin",
+  "btc": "\\Cryptocurrency\\Bitcoin",
   "dgc": "\\Cryptocurrency\\Digitalcoin",
   "dog": "\\Cryptocurrency\\Dogecoin",
   "drk": "\\Cryptocurrency\\Darkcoin",
-  "ftc": "\\Cryptocurrency\\Feathercoin"
+  "ftc": "\\Cryptocurrency\\Feathercoin",
+  "hbn": "\\Cryptocurrency\\Hobonickels",
+  "ltc": "\\Cryptocurrency\\Litecoin"
 }
