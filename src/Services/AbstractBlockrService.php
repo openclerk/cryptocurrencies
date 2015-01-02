@@ -5,6 +5,7 @@ namespace Cryptocurrency\Services;
 use \Monolog\Logger;
 use \Apis\Fetch;
 use \Apis\JSendException;
+use \Apis\FetchException;
 use \Openclerk\Currencies\BalanceException;
 use \Openclerk\Currencies\Currency;
 use \Openclerk\Currencies\BlockCurrency;
