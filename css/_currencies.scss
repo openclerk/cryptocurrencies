@@ -1,47 +1,31 @@
-.currency_name.currency_btc, .currency_name_btc {
-  padding-left: 20px;
-  background: url('../images/currencies/bitcoin.png') 0 0 no-repeat;
-  background-size: 16px 16px;
+$currency-codes:
+  "btc",
+  "ltc",
+  "bc1",
+  "dgc",
+  "dog",
+  "drk",
+  "ftc",
+  "hbn";
+
+@mixin currency-label-background($code) {
+  @if $code == "btc" { background-image: url('../images/currencies/bitcoin.png'); }
+  @if $code == "ltc" { background-image: url('../images/currencies/litecoin.png'); }
+  @if $code == "bc1" { background-image: url('../images/currencies/blackcoin.png'); }
+  @if $code == "dgc" { background-image: url('../images/currencies/digitalcoin.png'); }
+  @if $code == "dog" { background-image: url('../images/currencies/dogecoin.png'); }
+  @if $code == "drk" { background-image: url('../images/currencies/darkcoin.png'); }
+  @if $code == "ftc" { background-image: url('../images/currencies/feathercoin.png'); }
+  @if $code == "hbn" { background-image: url('../images/currencies/hobonickels.png'); }
 }
 
-.currency_name.currency_ltc, .currency_name_ltc {
-  padding-left: 20px;
-  background: url('../images/currencies/litecoin.png') 0 0 no-repeat;
-  background-size: 16px 16px;
-}
-
-.currency_name.currency_bc1, .currency_name_bc1 {
-  padding-left: 20px;
-  background: url('../images/currencies/blackcoin.png') 0 0 no-repeat;
-  background-size: 16px 16px;
-}
-
-.currency_name.currency_dgc, .currency_name_dgc {
-  padding-left: 20px;
-  background: url('../images/currencies/digitalcoin.png') 0 0 no-repeat;
-  background-size: 16px 16px;
-}
-
-.currency_name.currency_dog, .currency_name_dog {
-  padding-left: 20px;
-  background: url('../images/currencies/dogecoin.png') 0 0 no-repeat;
-  background-size: 16px 16px;
-}
-
-.currency_name.currency_drk, .currency_name_drk {
-  padding-left: 20px;
-  background: url('../images/currencies/darkcoin.png') 0 0 no-repeat;
-  background-size: 16px 16px;
-}
-
-.currency_name.currency_ftc, .currency_name_ftc {
-  padding-left: 20px;
-  background: url('../images/currencies/feathercoin.png') 0 0 no-repeat;
-  background-size: 16px 16px;
-}
-
-.currency_name.currency_hbn, .currency_name_hbn {
-  padding-left: 20px;
-  background: url('../images/currencies/hobonickels.png') 0 0 no-repeat;
-  background-size: 16px 16px;
+@mixin explorer-label-background($code) {
+  @if $code == "btc" { background-image: url('../images/explorers/blockchain.png'); }
+  @if $code == "ltc" { background-image: url('../images/explorers/litecoin.png'); }
+  @if $code == "bc1" { background-image: url('../images/explorers/blackchain.png'); }
+  @if $code == "dgc" { background-image: url('../images/explorers/blockr.png'); }
+  @if $code == "dog" { background-image: url('../images/explorers/dogechain.png'); }
+  @if $code == "drk" { background-image: url('../images/explorers/darkcoin.png'); }
+  @if $code == "ftc" { background-image: url('../images/explorers/feathercoin.png'); }
+  @if $code == "hbn" { background-image: url('../images/explorers/hobonickels.png'); }
 }

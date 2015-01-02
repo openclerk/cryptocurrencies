@@ -78,7 +78,20 @@ vendor/bin/phpunit --bootstrap "vendor/autoload.php" test/DogecoinTest
 Assets for each cryptocurrency, for example icons associated with the currency and
 associated services, are provided in `css/` and `images/`.
 
-These can be included into your project with [asset-discovery](https://github.com/soundasleep/asset-discovery).
+These can be included into your project with [asset-discovery](https://github.com/soundasleep/asset-discovery)
+and mixins are provided, for example:
+
+```scss
+@each $code in $currency-codes {
+  .currency_name.currency_#{$code}, .currency_name_#{$code} {
+    padding-left: 20px;
+    @include currency-label-background($code);
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+  }
+}
+```
 
 ## Donate
 
@@ -95,6 +108,5 @@ For new currencies, make sure that you also provide an associated
 
 1. Generate README list of currencies/services automatically
 1. Provide 32x32 icons for each cryptocurrency
-1. A better way of defining assets, maybe through SCSS `@mixin`s or variables?
 1. Link to live APIs on CryptFolio
 1. CI build server and link to test results
