@@ -3,7 +3,8 @@
   "description": "Definitions and implementations of cryptocurrencies in Openclerk",
   "autoload": {
     "psr-4": {
-      "Cryptocurrency\\": "src"
+      "Cryptocurrency\\": "src",
+      "Cryptocurrency\\Tests\\": "test"
     }
   },
   "require": {

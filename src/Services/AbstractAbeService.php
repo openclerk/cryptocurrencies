@@ -28,7 +28,6 @@ abstract class AbstractAbeService {
 
   /**
    * No transactions were found; possibly throw a {@link BalanceException}.
-   * For the DOGE currency this is actually OK so this should be overridden.
    */
   function foundNoTransactions(Logger $logger) {
     throw new BalanceException("Could not find any transactions on page");
@@ -81,7 +80,8 @@ abstract class AbstractAbeService {
       $balance = $matches[3];
       $logger->info("Address balance before removing unconfirmed: " . $balance);
 
-      if (preg_match_all('#<tr><td>.+</td><td><a href=[^>]+>([0-9]+)</a></td><td>.+</td><td>(- |\\+ |)([0-9\\.\\(\\)]+)</td><td>([0-9\\.]+)</td><td>' . $this->currency->getAbbr() . '</td></tr>#im', $html, $matches, PREG_SET_ORDER)) {
+      // transaction, block, date, amount, [balance,] currency
+      if (preg_match_all('#<tr><td>.+</td><td><a href=[^>]+>([0-9]+)</a></td><td>.+</td><td>(- |\\+ |)([0-9\\.\\(\\)]+)</td>(|<td>([0-9\\.]+)</td>)<td>' . $this->currency->getAbbr() . '</td></tr>#im', $html, $matches, PREG_SET_ORDER)) {
         foreach ($matches as $match) {
           if ($match[1] >= $block) {
             // too recent
@@ -103,14 +103,15 @@ abstract class AbstractAbeService {
         $logger->info("Confirmed balance after " . $this->confirmations . " confirmations: " . $balance);
 
       } else {
-        foundNoTransactions($logger);
+        $this->foundNoTransactions($logger);
       }
 
     } else if ($is_received && preg_match('#(|<tr><th>|<tr><td>)Received:?( |</th><td>|</td><td>)([0-9\.]+) ' . $this->currency->getAbbr() . '#i', $html, $matches)) {
       $balance = $matches[3];
       $logger->info("Address received before removing unconfirmed: " . $balance);
 
-      if (preg_match_all('#<tr><td>.+</td><td><a href=[^>]+>([0-9]+)</a></td><td>.+</td><td>(- |\\+ |)([0-9\\.\\(\\)]+)</td><td>([0-9\\.]+)</td><td>' . $this->currency->getAbbr() . '</td></tr>#im', $html, $matches, PREG_SET_ORDER)) {
+      // transaction, block, date, amount, [balance,] currency
+      if (preg_match_all('#<tr><td>.+</td><td><a href=[^>]+>([0-9]+)</a></td><td>.+</td><td>(- |\\+ |)([0-9\\.\\(\\)]+)</td>(|<td>([0-9\\.]+)</td>)<td>' . $this->currency->getAbbr() . '</td></tr>#im', $html, $matches, PREG_SET_ORDER)) {
         foreach ($matches as $match) {
           if ($match[1] >= $block) {
             // too recent
@@ -135,7 +136,7 @@ abstract class AbstractAbeService {
         $logger->info("Confirmed received after " . $this->confirmations . " confirmations: " . $balance);
 
       } else {
-        foundNoTransactions($logger);
+        $this->foundNoTransactions($logger);
       }
 
     } else if (strpos($html, "Address not seen on the network.") !== false) {
@@ -143,7 +144,7 @@ abstract class AbstractAbeService {
       $balance = 0;
       $logger->info("Address is valid, but not yet seen on network");
 
-    } else if (strpos($html, "Not a valid address.") !== false) {
+    } else if (strpos($html, "Not a valid address.") !== false || strpos($html, "Please enter search terms") !== false) {
       // the address is NOT valid
       throw new BalanceException("Not a valid address");
 
