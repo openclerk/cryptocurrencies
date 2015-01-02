@@ -2,7 +2,8 @@ openclerk/cryptocurrencies
 ==========================
 
 A library for accessing balances, block counts and difficulties of
-common cryptocurrencies, used by [Openclerk](http://openclerk.org).
+common cryptocurrencies, used by [Openclerk](http://openclerk.org)
+and live on [CryptFolio](https://cryptfolio.com).
 
 This extends on the abstract currency definitions provided by
 [openclerk/currencies](https://github.com/openclerk/currencies).
@@ -72,6 +73,13 @@ To run the tests for a single currency:
 vendor/bin/phpunit --bootstrap "vendor/autoload.php" test/DogecoinTest
 ```
 
+## Assets
+
+Assets for each cryptocurrency, for example icons associated with the currency and
+associated services, are provided in `css/` and `images/`.
+
+These can be included into your project with [asset-discovery](https://github.com/soundasleep/asset-discovery).
+
 ## Donate
 
 [Donations are appreciated](https://code.google.com/p/openclerk/wiki/Donating).
@@ -86,3 +94,6 @@ For new currencies, make sure that you also provide an associated
 ## TODO
 
 1. Generate README list of currencies/services automatically
+1. Provide 32x32 icons for each cryptocurrency
+1. A better way of defining assets, maybe through SCSS `@mixin`s or variables?
+1. Link to live APIs on CryptFolio
