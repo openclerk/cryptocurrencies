@@ -4,7 +4,8 @@
   &.explorer_bc1,
   &.explorer_dgc,
   &.explorer_dog,
-  &.explorer_drk {
+  &.explorer_drk,
+  &.explorer_ftc {
     padding-left: 20px;
   }
 }
@@ -36,5 +37,10 @@
 
 .drk_address .inspect, .explorer_name.explorer_drk {
   background: url('../images/explorers/darkcoin.png') top left no-repeat;
+  background-size: 16px 16px;
+}
+
+.ftc_address .inspect, .explorer_name.explorer_ftc {
+  background: url('../images/explorers/feathercoin.png') top left no-repeat;
   background-size: 16px 16px;
 }

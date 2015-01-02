@@ -4,5 +4,6 @@
   "bc1": "\\Cryptocurrency\\Blackcoin",
   "dgc": "\\Cryptocurrency\\Digitalcoin",
   "dog": "\\Cryptocurrency\\Dogecoin",
-  "drk": "\\Cryptocurrency\\Darkcoin"
+  "drk": "\\Cryptocurrency\\Darkcoin",
+  "ftc": "\\Cryptocurrency\\Feathercoin"
 }
