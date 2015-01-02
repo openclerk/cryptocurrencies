@@ -81,7 +81,7 @@ abstract class AbstractAbeService {
       $logger->info("Address balance before removing unconfirmed: " . $balance);
 
       // transaction, block, date, amount, [balance,] currency
-      if (preg_match_all('#<tr><td>.+</td><td><a href=[^>]+>([0-9]+)</a></td><td>.+</td><td>(- |\\+ |)([0-9\\.\\(\\)]+)</td>(|<td>([0-9\\.]+)</td>)<td>' . $this->currency->getAbbr() . '</td></tr>#im', $html, $matches, PREG_SET_ORDER)) {
+      if (preg_match_all('#<tr><td>.+</td><td><a href=[^>]+>([0-9]+)</a></td><td>.+?</td><td>(- |\\+ |)([0-9\\.\\(\\)]+)</td>(|<td>([0-9\\.]+)</td>)<td>' . $this->currency->getAbbr() . '</td></tr>#im', $html, $matches, PREG_SET_ORDER)) {
         foreach ($matches as $match) {
           if ($match[1] >= $block) {
             // too recent
@@ -111,7 +111,7 @@ abstract class AbstractAbeService {
       $logger->info("Address received before removing unconfirmed: " . $balance);
 
       // transaction, block, date, amount, [balance,] currency
-      if (preg_match_all('#<tr><td>.+</td><td><a href=[^>]+>([0-9]+)</a></td><td>.+</td><td>(- |\\+ |)([0-9\\.\\(\\)]+)</td>(|<td>([0-9\\.]+)</td>)<td>' . $this->currency->getAbbr() . '</td></tr>#im', $html, $matches, PREG_SET_ORDER)) {
+      if (preg_match_all('#<tr><td>.+</td><td><a href=[^>]+>([0-9]+)</a></td><td>.+?</td><td>(- |\\+ |)([0-9\\.\\(\\)]+)</td>(|<td>([0-9\\.]+)</td>)<td>' . $this->currency->getAbbr() . '</td></tr>#im', $html, $matches, PREG_SET_ORDER)) {
         foreach ($matches as $match) {
           if ($match[1] >= $block) {
             // too recent
