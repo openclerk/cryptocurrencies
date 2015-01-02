@@ -97,3 +97,4 @@ For new currencies, make sure that you also provide an associated
 1. Provide 32x32 icons for each cryptocurrency
 1. A better way of defining assets, maybe through SCSS `@mixin`s or variables?
 1. Link to live APIs on CryptFolio
+1. CI build server and link to test results
