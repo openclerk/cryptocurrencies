@@ -9,7 +9,8 @@ $currency-codes:
   "hbn",
   "ixc",
   "mec",
-  "nbt";
+  "nbt",
+  "nsr";
 
 @mixin currency-label-background($code) {
   @if $code == "btc" { background-image: url('../images/currencies/bitcoin.png'); }
@@ -23,6 +24,7 @@ $currency-codes:
   @if $code == "ixc" { background-image: url('../images/currencies/ixcoin.png'); }
   @if $code == "mec" { background-image: url('../images/currencies/megacoin.png'); }
   @if $code == "nbt" { background-image: url('../images/currencies/nubits.png'); }
+  @if $code == "nsr" { background-image: url('../images/currencies/nushares.png'); }
 }
 
 @mixin explorer-label-background($code) {
@@ -37,4 +39,5 @@ $currency-codes:
   @if $code == "ixc" { background-image: url('../images/explorers/abe.png'); }
   @if $code == "mec" { background-image: url('../images/explorers/blockr.png'); }
   @if $code == "nbt" { background-image: url('../images/explorers/nuexplorer.png'); }
+  @if $code == "nsr" { background-image: url('../images/explorers/nuexplorer.png'); }
 }

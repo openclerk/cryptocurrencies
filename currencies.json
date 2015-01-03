@@ -9,5 +9,6 @@
   "ltc": "\\Cryptocurrency\\Litecoin",
   "ixc": "\\Cryptocurrency\\Ixcoin",
   "mec": "\\Cryptocurrency\\Megacoin",
-  "nbt": "\\Cryptocurrency\\NuBits"
+  "nbt": "\\Cryptocurrency\\NuBits",
+  "nsr": "\\Cryptocurrency\\NuShares"
 }
