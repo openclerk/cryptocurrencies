@@ -1,43 +1,46 @@
 $currency-codes:
-  "btc",
-  "ltc",
   "bc1",
+  "btc",
   "dgc",
   "dog",
   "drk",
   "ftc",
   "hbn",
   "ixc",
+  "ltc",
   "mec",
   "nbt",
+  "net",
   "nsr";
 
 @mixin currency-label-background($code) {
-  @if $code == "btc" { background-image: url('../images/currencies/bitcoin.png'); }
-  @if $code == "ltc" { background-image: url('../images/currencies/litecoin.png'); }
   @if $code == "bc1" { background-image: url('../images/currencies/blackcoin.png'); }
+  @if $code == "btc" { background-image: url('../images/currencies/bitcoin.png'); }
   @if $code == "dgc" { background-image: url('../images/currencies/digitalcoin.png'); }
   @if $code == "dog" { background-image: url('../images/currencies/dogecoin.png'); }
   @if $code == "drk" { background-image: url('../images/currencies/darkcoin.png'); }
   @if $code == "ftc" { background-image: url('../images/currencies/feathercoin.png'); }
   @if $code == "hbn" { background-image: url('../images/currencies/hobonickels.png'); }
   @if $code == "ixc" { background-image: url('../images/currencies/ixcoin.png'); }
+  @if $code == "ltc" { background-image: url('../images/currencies/litecoin.png'); }
   @if $code == "mec" { background-image: url('../images/currencies/megacoin.png'); }
   @if $code == "nbt" { background-image: url('../images/currencies/nubits.png'); }
+  @if $code == "net" { background-image: url('../images/currencies/netcoin.png'); }
   @if $code == "nsr" { background-image: url('../images/currencies/nushares.png'); }
 }
 
 @mixin explorer-label-background($code) {
-  @if $code == "btc" { background-image: url('../images/explorers/blockchain.png'); }
-  @if $code == "ltc" { background-image: url('../images/explorers/abe.png'); }
   @if $code == "bc1" { background-image: url('../images/explorers/blackchain.png'); }
+  @if $code == "btc" { background-image: url('../images/explorers/blockchain.png'); }
   @if $code == "dgc" { background-image: url('../images/explorers/blockr.png'); }
   @if $code == "dog" { background-image: url('../images/explorers/dogechain.png'); }
   @if $code == "drk" { background-image: url('../images/explorers/darkcoin.png'); }
   @if $code == "ftc" { background-image: url('../images/explorers/feathercoin.png'); }
   @if $code == "hbn" { background-image: url('../images/explorers/hobonickels.png'); }
   @if $code == "ixc" { background-image: url('../images/explorers/abe.png'); }
+  @if $code == "ltc" { background-image: url('../images/explorers/abe.png'); }
   @if $code == "mec" { background-image: url('../images/explorers/blockr.png'); }
   @if $code == "nbt" { background-image: url('../images/explorers/nuexplorer.png'); }
+  @if $code == "net" { background-image: url('../images/explorers/abe.png'); }
   @if $code == "nsr" { background-image: url('../images/explorers/nuexplorer.png'); }
 }

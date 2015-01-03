@@ -10,5 +10,6 @@
   "ixc": "\\Cryptocurrency\\Ixcoin",
   "mec": "\\Cryptocurrency\\Megacoin",
   "nbt": "\\Cryptocurrency\\NuBits",
+  "net": "\\Cryptocurrency\\Netcoin",
   "nsr": "\\Cryptocurrency\\NuShares"
 }
