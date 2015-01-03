@@ -48,15 +48,15 @@ class Namecoin extends Cryptocurrency
   }
 
   function getExplorerName() {
-    return "Namecha.in";
+    return "DarkGameX";
   }
 
   function getExplorerURL() {
-    return "http://namecha.in/";
+    return "http://darkgamex.ch:2751/";
   }
 
   function getBalanceURL($address) {
-    return sprintf("http://namecha.in/address/%s", urlencode($address));
+    return sprintf("http://darkgamex.ch:2751/address/%s", urlencode($address));
   }
 
   /**
