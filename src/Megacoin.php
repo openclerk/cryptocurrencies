@@ -11,32 +11,32 @@ use \Openclerk\Currencies\ConfirmableCurrency;
 use \Openclerk\Currencies\ReceivedCurrency;
 
 /**
- * Represents the Digitalcoin cryptocurrency.
+ * Represents the Megacoin cryptocurrency.
  */
-class Digitalcoin extends Cryptocurrency
+class Megacoin extends Cryptocurrency
   implements BlockCurrency, DifficultyCurrency, ConfirmableCurrency, ReceivedCurrency {
 
   function getCode() {
-    return "dgc";
+    return "mec";
   }
 
   function getName() {
-    return "Digitalcoin";
+    return "Megacoin";
   }
 
   function getURL() {
-    return "http://digitalcoin.co/en/";
+    return "http://megacoin.co.nz/";
   }
 
   function getCommunityLinks() {
     return array(
-      "http://digitalcoin.co/quick-start/" => "Digitalcoin Quick Start",
+      "http://www.megacoin.co.nz/about" => "About Megacoin",
     );
   }
 
   function isValid($address) {
     // based on is_valid_btc_address
-    if (strlen($address) >= 27 && strlen($address) <= 34 && (substr($address, 0, 1) == "D")
+    if (strlen($address) >= 27 && strlen($address) <= 34 && (substr($address, 0, 1) == "M")
         && preg_match("#^[A-Za-z0-9]+$#", $address)) {
       return true;
     }
@@ -52,18 +52,18 @@ class Digitalcoin extends Cryptocurrency
   }
 
   function getExplorerURL() {
-    return "http://dgc.blockr.io/";
+    return "http://mec.blockr.io/";
   }
 
   function getBalanceURL($address) {
-    return sprintf("http://dgc.blockr.io/address/info/%s", urlencode($address));
+    return sprintf("http://mec.blockr.io/address/info/%s", urlencode($address));
   }
 
   /**
    * @throws {@link BalanceException} if something happened and the balance could not be obtained.
    */
   function getBalance($address, Logger $logger) {
-    $fetcher = new Services\DigitalcoinBlockr();
+    $fetcher = new Services\MegacoinBlockr();
     return $fetcher->getBalance($address, $logger);
   }
 
@@ -71,7 +71,7 @@ class Digitalcoin extends Cryptocurrency
    * @throws {@link BalanceException} if something happened and the balance could not be obtained.
    */
   function getReceived($address, Logger $logger) {
-    $fetcher = new Services\DigitalcoinBlockr();
+    $fetcher = new Services\MegacoinBlockr();
     return $fetcher->getBalance($address, $logger, true);
   }
 
@@ -79,17 +79,17 @@ class Digitalcoin extends Cryptocurrency
    * @throws {@link BalanceException} if something happened and the balance could not be obtained.
    */
   function getBalanceWithConfirmations($address, $confirmations, Logger $logger) {
-    $fetcher = new Services\DigitalcoinBlockr();
+    $fetcher = new Services\MegacoinBlockr();
     return $fetcher->getBalanceWithConfirmations($address, $confirmations, $logger);
   }
 
   function getBlockCount(Logger $logger) {
-    $fetcher = new Services\DigitalcoinBlockr();
+    $fetcher = new Services\MegacoinBlockr();
     return $fetcher->getBlockCount($logger);
   }
 
   function getDifficulty(Logger $logger) {
-    $fetcher = new Services\DigitalcoinBlockr();
+    $fetcher = new Services\MegacoinBlockr();
     return $fetcher->getDifficulty($logger);
   }
 

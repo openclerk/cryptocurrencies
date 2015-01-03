@@ -7,7 +7,8 @@ $currency-codes:
   "drk",
   "ftc",
   "hbn",
-  "ixc";
+  "ixc",
+  "mec";
 
 @mixin currency-label-background($code) {
   @if $code == "btc" { background-image: url('../images/currencies/bitcoin.png'); }
@@ -19,6 +20,7 @@ $currency-codes:
   @if $code == "ftc" { background-image: url('../images/currencies/feathercoin.png'); }
   @if $code == "hbn" { background-image: url('../images/currencies/hobonickels.png'); }
   @if $code == "ixc" { background-image: url('../images/currencies/ixcoin.png'); }
+  @if $code == "mec" { background-image: url('../images/currencies/megacoin.png'); }
 }
 
 @mixin explorer-label-background($code) {
@@ -31,4 +33,5 @@ $currency-codes:
   @if $code == "ftc" { background-image: url('../images/explorers/feathercoin.png'); }
   @if $code == "hbn" { background-image: url('../images/explorers/hobonickels.png'); }
   @if $code == "ixc" { background-image: url('../images/explorers/abe.png'); }
+  @if $code == "mec" { background-image: url('../images/explorers/blockr.png'); }
 }

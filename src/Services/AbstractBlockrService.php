@@ -18,13 +18,11 @@ abstract class AbstractBlockrService {
     // default parameters
     $args += array(
       "confirmations" => 6,
-      "block_url" => false,
-      "difficulty_url" => false,
+      "info_url" => false,
     );
 
     $this->url = $args["url"];
-    $this->block_url = $args["block_url"];
-    $this->difficulty_url = $args["difficulty_url"];
+    $this->info_url = $args["info_url"];
     $this->confirmations = $args["confirmations"];
   }
 
@@ -71,11 +69,11 @@ abstract class AbstractBlockrService {
   }
 
   function getBlockCount(Logger $logger) {
-    if (!$this->block_url) {
+    if (!$this->info_url) {
       throw new BlockException("No known block URL for currency '" . $this->currency->getCode() . "'");
     }
 
-    $url = $this->block_url;
+    $url = $this->info_url;
 
     $logger->info($url);
     $json = Fetch::jsonDecode(Fetch::get($url));
@@ -90,11 +88,11 @@ abstract class AbstractBlockrService {
   }
 
   function getDifficulty(Logger $logger) {
-    if (!$this->difficulty_url) {
+    if (!$this->info_url) {
       throw new DifficultyException("No known difficulty URL for currency '" . $this->currency->getCode() . "'");
     }
 
-    $url = $this->difficulty_url;
+    $url = $this->info_url;
 
     $logger->info($url);
     $json = Fetch::jsonDecode(Fetch::get($url));
