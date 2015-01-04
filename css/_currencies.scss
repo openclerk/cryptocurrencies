@@ -19,7 +19,8 @@ $currency-codes:
   "rdd",
   "trc",
   "via",
-  "vrc";
+  "vrc",
+  "vtc";
 
 @mixin currency-label-background($code) {
   @if $code == "bc1" { background-image: url('../images/currencies/blackcoin.png'); }
@@ -43,6 +44,7 @@ $currency-codes:
   @if $code == "trc" { background-image: url('../images/currencies/terracoin.png'); }
   @if $code == "via" { background-image: url('../images/currencies/viacoin.png'); }
   @if $code == "vrc" { background-image: url('../images/currencies/vericoin.png'); }
+  @if $code == "vtc" { background-image: url('../images/currencies/vertcoin.png'); }
 }
 
 @mixin explorer-label-background($code) {
@@ -67,4 +69,5 @@ $currency-codes:
   @if $code == "trc" { background-image: url('../images/explorers/coinplorer.png'); }
   @if $code == "via" { background-image: url('../images/explorers/viacoin.png'); }
   @if $code == "vrc" { background-image: url('../images/explorers/chainz.png'); }
+  @if $code == "vtc" { background-image: url('../images/explorers/abe.png'); }
 }

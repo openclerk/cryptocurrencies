@@ -19,5 +19,6 @@
   "rdd": "\\Cryptocurrency\\Reddcoin",
   "trc": "\\Cryptocurrency\\Terracoin",
   "via": "\\Cryptocurrency\\Viacoin",
-  "vrc": "\\Cryptocurrency\\Vericoin"
+  "vrc": "\\Cryptocurrency\\Vericoin",
+  "vtc": "\\Cryptocurrency\\Vertcoin"
 }
