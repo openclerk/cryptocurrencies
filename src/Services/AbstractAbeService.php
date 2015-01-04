@@ -9,7 +9,7 @@ use \Openclerk\Currencies\BalanceException;
 use \Openclerk\Currencies\Currency;
 use \Openclerk\Currencies\BlockCurrency;
 
-abstract class AbstractAbeService {
+abstract class AbstractAbeService extends AbstractHTMLService {
 
   function __construct(Currency $currency, $args) {
     $this->currency = $currency;
@@ -68,13 +68,7 @@ abstract class AbstractAbeService {
     $url = sprintf($this->url, $address);
     $logger->info($url);
     $html = Fetch::get($url);
-    $html = preg_replace("#[\n\t]+#", "", $html);
-    $html = preg_replace("#</tr>#", "</tr>\n", $html);
-    $html = preg_replace("#<td[^>]+?>#", "<td>", $html);
-    $html = preg_replace("#<tr[^>]+?>#", "<tr>", $html);
-    $html = preg_replace("#<span[^>]+?>#", "", $html);
-    $html = preg_replace("#</span>#", "", $html);
-    $html = preg_replace("#> *<#", "><", $html);
+    $html = $this->stripHTML($html);
 
     // assumes that the page format will not change
     if (!$is_received && preg_match('#(<p>|<tr><th>|<tr><td>)Balance:?( |</th><td>|</td><td>)([0-9\.]+) ' . $this->currency->getAbbr() . '#im', $html, $matches)) {

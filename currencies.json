@@ -16,5 +16,6 @@
   "nvc": "\\Cryptocurrency\\Novacoin",
   "nxt": "\\Cryptocurrency\\Nxt",
   "ppc": "\\Cryptocurrency\\Peercoin",
-  "rdd": "\\Cryptocurrency\\Reddcoin"
+  "rdd": "\\Cryptocurrency\\Reddcoin",
+  "trc": "\\Cryptocurrency\\Terracoin"
 }

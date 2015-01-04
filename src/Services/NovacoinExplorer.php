@@ -9,7 +9,7 @@ use \Openclerk\Currencies\BalanceException;
 use \Openclerk\Currencies\Currency;
 use \Openclerk\Currencies\BlockCurrency;
 
-class NovacoinExplorer {
+class NovacoinExplorer extends AbstractHTMLService {
 
   function __construct() {
     $this->currency = new \Cryptocurrency\Novacoin();
@@ -48,14 +48,7 @@ class NovacoinExplorer {
     $logger->info($url);
 
     $html = Fetch::get($url);
-
-    $html = preg_replace("#[\n\t]+#", "", $html);
-    $html = preg_replace("#</tr>#", "</tr>\n", $html);
-    $html = preg_replace("#<td[^>]+?>#", "<td>", $html);
-    $html = preg_replace("#<tr[^>]+?>#", "<tr>", $html);
-    $html = preg_replace("#<span[^>]+?>#", "", $html);
-    $html = preg_replace("#</span>#", "", $html);
-    $html = preg_replace("#> *<#", "><", $html);
+    $html = $this->stripHTML($html);
 
     // number, hash, type, date, difficulty, transactions, ...
     if (preg_match('#<tr><td>([0-9]+)</td><td>.+?</td><td>(PoW|PoS)</td><td>([^<]+)</td><td>([0-9\\.]+)</td><td>([0-9]+)</td>#im', $html, $matches)) {
@@ -76,14 +69,7 @@ class NovacoinExplorer {
     $logger->info($url);
 
     $html = Fetch::get($url);
-
-    $html = preg_replace("#[\n\t]+#", "", $html);
-    $html = preg_replace("#</tr>#", "</tr>\n", $html);
-    $html = preg_replace("#<td[^>]+?>#", "<td>", $html);
-    $html = preg_replace("#<tr[^>]+?>#", "<tr>", $html);
-    $html = preg_replace("#<span[^>]+?>#", "", $html);
-    $html = preg_replace("#</span>#", "", $html);
-    $html = preg_replace("#> *<#", "><", $html);
+    $html = $this->stripHTML($html);
 
     // number, hash, type, date, difficulty, transactions, ...
     if (preg_match('#<tr><td>([0-9]+)</td><td>.+?</td><td>(PoW)</td><td>([^<]+)</td><td>([0-9\\.]+)</td><td>([0-9]+)</td>#im', $html, $matches)) {

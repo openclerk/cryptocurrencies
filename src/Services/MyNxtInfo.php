@@ -9,7 +9,7 @@ use \Openclerk\Currencies\BalanceException;
 use \Openclerk\Currencies\BlockException;
 use \Openclerk\Currencies\Currency;
 
-class MyNxtInfo {
+class MyNxtInfo extends AbstractHTMLService {
 
   function __construct() {
     $this->currency = new \Cryptocurrency\Nxt();
@@ -34,15 +34,7 @@ class MyNxtInfo {
       $logger->info($url);
 
       $html = Fetch::get($url);
-
-      $html = preg_replace("#[\n\t]+#", "", $html);
-      $html = preg_replace("#</tr>#", "</tr>\n", $html);
-      $html = preg_replace("#<td[^>]+?>#", "<td>", $html);
-      $html = preg_replace("#<tr[^>]+?>#", "<tr>", $html);
-      $html = preg_replace("#<span[^>]+?>#", "", $html);
-      $html = preg_replace("#</span>#", "", $html);
-      $html = preg_replace("#</?(b|i|em|strong)>#", "", $html);
-      $html = preg_replace("#> *<#", "><", $html);
+      $html = $this->stripHTML($html);
 
       $matches = false;
       if (preg_match("#Total Nxt in:?</td><td>([0-9\.]+)</td>#im", $html, $matches)) {

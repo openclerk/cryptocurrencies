@@ -16,7 +16,8 @@ $currency-codes:
   "nvc",
   "nxt",
   "ppc",
-  "rdd";
+  "rdd",
+  "trc";
 
 @mixin currency-label-background($code) {
   @if $code == "bc1" { background-image: url('../images/currencies/blackcoin.png'); }
@@ -37,6 +38,7 @@ $currency-codes:
   @if $code == "nxt" { background-image: url('../images/currencies/nxt.png'); }
   @if $code == "ppc" { background-image: url('../images/currencies/peercoin.png'); }
   @if $code == "rdd" { background-image: url('../images/currencies/reddcoin.png'); }
+  @if $code == "trc" { background-image: url('../images/currencies/terracoin.png'); }
 }
 
 @mixin explorer-label-background($code) {
@@ -58,4 +60,5 @@ $currency-codes:
   @if $code == "nxt" { background-image: url('../images/explorers/mynxt.png'); }
   @if $code == "ppc" { background-image: url('../images/explorers/blockr.png'); }
   @if $code == "rdd" { background-image: url('../images/explorers/reddsight.png'); }
+  @if $code == "trc" { background-image: url('../images/explorers/coinplorer.png'); }
 }

@@ -21,6 +21,8 @@ and run `composer update` to install it into your project:
 }
 ```
 
+PHP 5.4.6+ is required because some APIs require cURL 7.24+ due to the POODLE SSL bug.
+
 * [Currencies supported](https://github.com/openclerk/cryptocurrencies/tree/master/src)
 * [Services supported](https://github.com/openclerk/cryptocurrencies/tree/master/src/Services)
 
