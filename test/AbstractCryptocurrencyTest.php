@@ -97,8 +97,10 @@ abstract class AbstractCryptocurrencyTest extends \PHPUnit_Framework_TestCase {
   }
 
   function testDifficulty() {
-    $value = $this->currency->getDifficulty($this->logger);
-    $this->assertGreaterThan($this->expectedDifficulty(), $value);
+    if ($this->currency instanceof \Openclerk\Currencies\DifficultyCurrency) {
+      $value = $this->currency->getDifficulty($this->logger);
+      $this->assertGreaterThan($this->expectedDifficulty(), $value);
+    }
   }
 
 }

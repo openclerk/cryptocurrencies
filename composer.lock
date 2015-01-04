@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "26a5a7eae9b9a6fefce421ad8d10b003",
+    "hash": "dde8932b8cabef3bfb6c673a9e11f2f6",
     "packages": [
         {
             "name": "monolog/monolog",
@@ -84,12 +84,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/openclerk/apis.git",
-                "reference": "36fd65ecc88b009e831c16dfdec93cc5fe935663"
+                "reference": "fe3d437f56516bf4d0d4c0f286e35d78dbb04e35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openclerk/apis/zipball/36fd65ecc88b009e831c16dfdec93cc5fe935663",
-                "reference": "36fd65ecc88b009e831c16dfdec93cc5fe935663",
+                "url": "https://api.github.com/repos/openclerk/apis/zipball/fe3d437f56516bf4d0d4c0f286e35d78dbb04e35",
+                "reference": "fe3d437f56516bf4d0d4c0f286e35d78dbb04e35",
                 "shasum": ""
             },
             "require": {
@@ -106,7 +106,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "A library for defining and using APIs",
-            "time": "2015-01-01 11:23:17"
+            "time": "2015-01-04 00:37:08"
         },
         {
             "name": "openclerk/config",

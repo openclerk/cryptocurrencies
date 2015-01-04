@@ -18,13 +18,6 @@ class NovacoinExplorer {
   }
 
   /**
-   * No transactions were found; possibly throw a {@link BalanceException}.
-   */
-  function foundNoTransactions(Logger $logger) {
-    throw new BalanceException("Could not find any transactions on page");
-  }
-
-  /**
    *
    * @throws {@link BalanceException} if something happened and the balance could not be obtained.
    */

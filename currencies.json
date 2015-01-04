@@ -13,5 +13,6 @@
   "net": "\\Cryptocurrency\\Netcoin",
   "nmc": "\\Cryptocurrency\\Namecoin",
   "nsr": "\\Cryptocurrency\\NuShares",
-  "nvc": "\\Cryptocurrency\\Novacoin"
+  "nvc": "\\Cryptocurrency\\Novacoin",
+  "nxt": "\\Cryptocurrency\\Nxt"
 }
