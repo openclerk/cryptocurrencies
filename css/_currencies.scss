@@ -22,7 +22,8 @@ $currency-codes:
   "vrc",
   "vtc",
   "wdc",
-  "xpm";
+  "xpm",
+  "xrp";
 
 @mixin currency-label-background($code) {
   @if $code == "bc1" { background-image: url('../images/currencies/blackcoin.png'); }
@@ -49,6 +50,7 @@ $currency-codes:
   @if $code == "vtc" { background-image: url('../images/currencies/vertcoin.png'); }
   @if $code == "wdc" { background-image: url('../images/currencies/worldcoin.png'); }
   @if $code == "xpm" { background-image: url('../images/currencies/primecoin.png'); }
+  @if $code == "xrp" { background-image: url('../images/currencies/ripple.png'); }
 }
 
 @mixin explorer-label-background($code) {
@@ -76,4 +78,5 @@ $currency-codes:
   @if $code == "vtc" { background-image: url('../images/explorers/abe.png'); }
   @if $code == "wdc" { background-image: url('../images/explorers/worldcoin.png'); }
   @if $code == "xpm" { background-image: url('../images/explorers/coinplorer.png'); }
+  @if $code == "xrp" { background-image: url('../images/explorers/ripplecharts.png'); }
 }

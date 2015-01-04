@@ -104,8 +104,10 @@ abstract class AbstractCryptocurrencyTest extends \PHPUnit_Framework_TestCase {
   }
 
   function testBlockCount() {
-    $value = $this->currency->getBlockCount($this->logger);
-    $this->assertGreaterThan(100, $value);
+    if ($this->currency instanceof \Openclerk\Currencies\BlockCurrency) {
+      $value = $this->currency->getBlockCount($this->logger);
+      $this->assertGreaterThan(100, $value);
+    }
   }
 
   function expectedDifficulty() {

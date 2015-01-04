@@ -22,5 +22,6 @@
   "vrc": "\\Cryptocurrency\\Vericoin",
   "vtc": "\\Cryptocurrency\\Vertcoin",
   "wdc": "\\Cryptocurrency\\Worldcoin",
-  "xpm": "\\Cryptocurrency\\Primecoin"
+  "xpm": "\\Cryptocurrency\\Primecoin",
+  "xrp": "\\Cryptocurrency\\Ripple"
 }

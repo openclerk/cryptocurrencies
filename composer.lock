@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b27439ea189a173fcb33036a7e41e792",
+    "hash": "2fd20052f0264496b1300fc528026041",
     "packages": [
         {
             "name": "monolog/monolog",
@@ -137,12 +137,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/openclerk/currencies.git",
-                "reference": "af97acf911ba03ae61df5057f3fcb593ba71fc80"
+                "reference": "20f8a7e5aca8a4a0469fb86244feadade6d4cd75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openclerk/currencies/zipball/af97acf911ba03ae61df5057f3fcb593ba71fc80",
-                "reference": "af97acf911ba03ae61df5057f3fcb593ba71fc80",
+                "url": "https://api.github.com/repos/openclerk/currencies/zipball/20f8a7e5aca8a4a0469fb86244feadade6d4cd75",
+                "reference": "20f8a7e5aca8a4a0469fb86244feadade6d4cd75",
                 "shasum": ""
             },
             "require": {
@@ -154,8 +154,8 @@
                     "Openclerk\\Currencies\\": "src"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
-            "time": "2014-12-30 10:14:13"
+            "notification-url": "http://packagist.org/downloads/",
+            "time": "2015-01-04 06:49:51"
         },
         {
             "name": "psr/log",
@@ -929,8 +929,9 @@
         "soundasleep/component-tests": 20
     },
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": {
-        "php": ">=5.5.0"
+        "php": ">=5.4.6"
     },
     "platform-dev": []
 }
