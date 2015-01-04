@@ -4,6 +4,7 @@ namespace Cryptocurrency\Tests;
 
 use Monolog\Logger;
 use Monolog\Handler\BufferHandler;
+use Monolog\Handler\NullHandler;
 use Monolog\Handler\ErrorLogHandler;
 use Openclerk\Config;
 use Openclerk\Currencies\Currency;
@@ -17,13 +18,28 @@ abstract class AbstractCryptocurrencyTest extends \PHPUnit_Framework_TestCase {
     $this->logger = new Logger("test");
     $this->currency = $currency;
 
-    // TODO make this a debug switch
-    $this->logger->pushHandler(new BufferHandler(new ErrorLogHandler()));
+    if ($this->isDebug()) {
+      $this->logger->pushHandler(new BufferHandler(new ErrorLogHandler()));
+    } else {
+      $this->logger->pushHandler(new NullHandler());
+    }
 
     Config::merge(array(
       $currency->getCode() . "_confirmations" => 6,
       "get_contents_timeout" => 10,
     ));
+  }
+
+  function isDebug() {
+    global $argv;
+    if (isset($argv)) {
+      foreach ($argv as $value) {
+        if ($value === "--debug" || $value === "--verbose") {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
   abstract function getBalanceAddress();

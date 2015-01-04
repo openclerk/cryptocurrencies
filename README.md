@@ -73,6 +73,9 @@ To run the tests for a single currency:
 vendor/bin/phpunit --bootstrap "vendor/autoload.php" test/DogecoinTest
 ```
 
+To get debug output for the tests (such as CURL requests and decoded output),
+add the `--debug` switch to your `vendor/bin/phpunit` command.
+
 ## Assets
 
 Assets for each cryptocurrency, for example icons associated with the currency and
