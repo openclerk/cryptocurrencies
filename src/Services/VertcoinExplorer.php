@@ -57,6 +57,7 @@ class VertcoinExplorer {
       $balance = ($json['result']['total_output'] - $json['result']['total_input']) / 1e8;
     }
 
+    $logger->info("Balance: " . $balance);
     return $balance;
   }
 
@@ -99,7 +100,7 @@ class VertcoinExplorer {
     $json = Fetch::jsonDecode(Fetch::post($url, $data));
 
     if (!isset($json['result'][0]['diff'])) {
-      throw new BlockException("Could not find difficulty");
+      throw new DifficultyException("Could not find difficulty");
     }
     $value = $json['result'][0]['diff'];
     $logger->info("Difficulty: " . number_format($value));

@@ -20,5 +20,6 @@
   "trc": "\\Cryptocurrency\\Terracoin",
   "via": "\\Cryptocurrency\\Viacoin",
   "vrc": "\\Cryptocurrency\\Vericoin",
-  "vtc": "\\Cryptocurrency\\Vertcoin"
+  "vtc": "\\Cryptocurrency\\Vertcoin",
+  "wdc": "\\Cryptocurrency\\Worldcoin"
 }
