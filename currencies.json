@@ -15,5 +15,6 @@
   "nsr": "\\Cryptocurrency\\NuShares",
   "nvc": "\\Cryptocurrency\\Novacoin",
   "nxt": "\\Cryptocurrency\\Nxt",
-  "ppc": "\\Cryptocurrency\\Peercoin"
+  "ppc": "\\Cryptocurrency\\Peercoin",
+  "rdd": "\\Cryptocurrency\\Reddcoin"
 }

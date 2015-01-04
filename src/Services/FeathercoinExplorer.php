@@ -12,7 +12,7 @@ use \Openclerk\Config;
 class FeathercoinExplorer extends AbstractInsightService {
 
   function __construct() {
-    parent::__construct(new \Cryptocurrency\Darkcoin(), array(
+    parent::__construct(new \Cryptocurrency\Feathercoin(), array(
       "url" => "http://explorer.feathercoin.com/api/addr/%s/?noTxList=1",
       "info_url" => "http://explorer.feathercoin.com/api/status?q=getInfo",
     ));
