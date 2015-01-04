@@ -83,7 +83,7 @@ abstract class AbstractInsightService {
       throw new BlockException("Block number was not present");
     }
     $value = $json['info']['blocks'];
-    $logger->info("Block count: " . $value);
+    $logger->info("Block count: " . number_format($value));
 
     return $value;
   }
@@ -105,7 +105,7 @@ abstract class AbstractInsightService {
     } else {
       throw new DifficultyException("Difficulty was not present");
     }
-    $logger->info("Difficulty: " . $value);
+    $logger->info("Difficulty: " . number_format($value));
 
     return $value;
   }
