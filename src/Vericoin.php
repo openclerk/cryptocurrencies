@@ -11,9 +11,9 @@ use \Openclerk\Currencies\ConfirmableCurrency;
 use \Openclerk\Currencies\ReceivedCurrency;
 
 /**
- * Represents the Viacoin cryptocurrency.
+ * Represents the Vericoin cryptocurrency.
  */
-class Viacoin extends Cryptocurrency
+class Vericoin extends Cryptocurrency
   implements BlockCurrency, DifficultyCurrency, ReceivedCurrency {
 
   function getCode() {
@@ -21,16 +21,16 @@ class Viacoin extends Cryptocurrency
   }
 
   function getName() {
-    return "Viacoin";
+    return "Vericoin";
   }
 
   function getURL() {
-    return "http://viacoin.org/";
+    return "http://www.vericoin.info/";
   }
 
   function getCommunityLinks() {
     return array(
-      "http://www.reddit.com/r/viacoin" => "/r/viacoin",
+      "https://www.vericoin.info/community.html" => "Vericoin Community",
     );
   }
 
@@ -48,22 +48,22 @@ class Viacoin extends Cryptocurrency
   }
 
   function getExplorerName() {
-    return "Viacoin Explorer";
+    return "Chainz";
   }
 
   function getExplorerURL() {
-    return "http://explorer.viacoin.org/";
+    return "https://chainz.cryptoid.info/";
   }
 
   function getBalanceURL($address) {
-    return sprintf("http://explorer.viacoin.org/address/%s", urlencode($address));
+    return sprintf("https://chainz.cryptoid.info/vrc/address.dws?%s.htm", urlencode($address));
   }
 
   /**
    * @throws {@link BalanceException} if something happened and the balance could not be obtained.
    */
   function getBalance($address, Logger $logger) {
-    $fetcher = new Services\ViacoinExplorer();
+    $fetcher = new Services\VericoinExplorer();
     return $fetcher->getBalance($address, $logger);
   }
 
@@ -71,17 +71,17 @@ class Viacoin extends Cryptocurrency
    * @throws {@link BalanceException} if something happened and the balance could not be obtained.
    */
   function getReceived($address, Logger $logger) {
-    $fetcher = new Services\ViacoinExplorer();
+    $fetcher = new Services\VericoinExplorer();
     return $fetcher->getBalance($address, $logger, true);
   }
 
   function getBlockCount(Logger $logger) {
-    $fetcher = new Services\ViacoinExplorer();
+    $fetcher = new Services\VericoinExplorer();
     return $fetcher->getBlockCount($logger);
   }
 
   function getDifficulty(Logger $logger) {
-    $fetcher = new Services\ViacoinExplorer();
+    $fetcher = new Services\VericoinExplorer();
     return $fetcher->getDifficulty($logger);
   }
 

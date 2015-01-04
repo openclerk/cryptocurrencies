@@ -18,5 +18,6 @@
   "ppc": "\\Cryptocurrency\\Peercoin",
   "rdd": "\\Cryptocurrency\\Reddcoin",
   "trc": "\\Cryptocurrency\\Terracoin",
-  "via": "\\Cryptocurrency\\Viacoin"
+  "via": "\\Cryptocurrency\\Viacoin",
+  "vrc": "\\Cryptocurrency\\Vericoin"
 }
