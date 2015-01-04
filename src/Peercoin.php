@@ -17,7 +17,7 @@ class Peercoin extends Cryptocurrency
   implements BlockCurrency, DifficultyCurrency, ConfirmableCurrency, ReceivedCurrency {
 
   function getCode() {
-    return "dgc";
+    return "ppc";
   }
 
   function getName() {

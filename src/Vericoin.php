@@ -17,7 +17,7 @@ class Vericoin extends Cryptocurrency
   implements BlockCurrency, DifficultyCurrency, ReceivedCurrency {
 
   function getCode() {
-    return "via";
+    return "vrc";
   }
 
   function getName() {
