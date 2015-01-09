@@ -25,7 +25,7 @@ class Blackcoin extends Cryptocurrency
   }
 
   function getAbbr() {
-    return "BC";
+    return "BLK";
   }
 
   function getURL() {
