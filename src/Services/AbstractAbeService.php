@@ -71,16 +71,16 @@ abstract class AbstractAbeService extends AbstractHTMLService {
     $html = $this->stripHTML($html);
 
     // assumes that the page format will not change
-    if (!$is_received && preg_match('#(<p>|<tr><th>|<tr><td>)Balance:?( |</th><td>|</td><td>)([0-9\.]+) ' . $this->currency->getAbbr() . '#im', $html, $matches)) {
-      $balance = $matches[3];
+    if (!$is_received && preg_match('#(<p>|<tr><th>|<tr><td>)Balance:?( |</th><td>|</td><td>)([0-9,\.]+) ' . $this->currency->getAbbr() . '#im', $html, $matches)) {
+      $balance = str_replace(",", "", $matches[3]);
       $logger->info("Address balance before removing unconfirmed: " . $balance);
 
       // transaction, block, date, amount, [balance,] currency
-      if (preg_match_all('#<tr><td>.+</td><td><a href=[^>]+>([0-9]+)</a></td><td>.+?</td><td>(- |\\+ |)([0-9\\.\\(\\)]+)</td>(|<td>([0-9\\.]+)</td>)<td>' . $this->currency->getAbbr() . '</td></tr>#im', $html, $matches, PREG_SET_ORDER)) {
+      if (preg_match_all('#<tr><td>.+</td><td><a href=[^>]+>([0-9]+)</a></td><td>.+?</td><td>(- |\\+ |)([0-9,\\.\\(\\)]+)</td>(|<td>([0-9\\.]+)</td>)<td>' . $this->currency->getAbbr() . '</td></tr>#im', $html, $matches, PREG_SET_ORDER)) {
         foreach ($matches as $match) {
           if ($match[1] >= $block) {
             // too recent
-            $amount = $match[3];
+            $amount = str_replace(",", "", $match[3]);
             if (substr($amount, 0, 1) == "(" && substr($amount, -1) == ")") {
               // convert (1.23) into -1.23
               $amount = - substr($amount, 1, strlen($amount) - 2);
@@ -101,16 +101,16 @@ abstract class AbstractAbeService extends AbstractHTMLService {
         $this->foundNoTransactions($logger);
       }
 
-    } else if ($is_received && preg_match('#(|<tr><th>|<tr><td>)Received:?( |</th><td>|</td><td>)([0-9\.]+) ' . $this->currency->getAbbr() . '#i', $html, $matches)) {
-      $balance = $matches[3];
+    } else if ($is_received && preg_match('#(|<tr><th>|<tr><td>)Received:?( |</th><td>|</td><td>)([0-9,\.]+) ' . $this->currency->getAbbr() . '#i', $html, $matches)) {
+      $balance = str_replace(",", "", $matches[3]);
       $logger->info("Address received before removing unconfirmed: " . $balance);
 
       // transaction, block, date, amount, [balance,] currency
-      if (preg_match_all('#<tr><td>.+</td><td><a href=[^>]+>([0-9]+)</a></td><td>.+?</td><td>(- |\\+ |)([0-9\\.\\(\\)]+)</td>(|<td>([0-9\\.]+)</td>)<td>' . $this->currency->getAbbr() . '</td></tr>#im', $html, $matches, PREG_SET_ORDER)) {
+      if (preg_match_all('#<tr><td>.+</td><td><a href=[^>]+>([0-9]+)</a></td><td>.+?</td><td>(- |\\+ |)([0-9,\\.\\(\\)]+)</td>(|<td>([0-9\\.]+)</td>)<td>' . $this->currency->getAbbr() . '</td></tr>#im', $html, $matches, PREG_SET_ORDER)) {
         foreach ($matches as $match) {
           if ($match[1] >= $block) {
             // too recent
-            $amount = $match[3];
+            $amount = str_replace(",", "", $match[3]);
             if (substr($amount, 0, 1) == "(" && substr($amount, -1) == ")") {
               // convert (1.23) into -1.23
               $amount = - substr($amount, 1, strlen($amount) - 2);
