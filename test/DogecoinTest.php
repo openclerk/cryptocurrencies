@@ -44,4 +44,9 @@ class DogecoinTest extends AbstractCryptocurrencyTest {
     }
   }
 
+  function testZeroBalance() {
+    $balance = $this->currency->getBalance("D88CHfdvzegoTDkMb8ZpW6xe7mXK9dXDAY", $this->logger);
+    $this->assertEquals(0, $balance);
+  }
+
 }

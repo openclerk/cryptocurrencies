@@ -3,6 +3,7 @@
 namespace Cryptocurrency\Services;
 
 use \Openclerk\Currencies\Currency;
+use \Monolog\Logger;
 
 class Dogechain extends AbstractAbeService {
 
@@ -17,5 +18,12 @@ class Dogechain extends AbstractAbeService {
 
   // TODO remove ltc_address_url
   // TODO remove ltc_confirmations
+
+  /**
+   * No transactions were found; for Dogechain, this is OK.
+   */
+  function foundNoTransactions(Logger $logger) {
+//    throw new BalanceException("Could not find any transactions on page");
+  }
 
 }
