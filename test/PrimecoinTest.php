@@ -20,7 +20,7 @@ class PrimecoinTest extends AbstractCryptocurrencyTest {
   }
 
   function doTestBalance($balance) {
-    $this->assertEquals(295005.71475711, $balance);
+    $this->assertEquals(0, $balance);
   }
 
   function doTestReceived($balance) {
@@ -34,4 +34,11 @@ class PrimecoinTest extends AbstractCryptocurrencyTest {
   function testInvalidBalance() {
     // empty
   }
+
+  function testZeroBalance() {
+    $balance = $this->currency->getBalance("AUqro6Zi6KVJA43CA73ZWYrvagUUGZFD1A", $this->logger);
+    $this->assertEquals(0, $balance);
+  }
+
+
 }

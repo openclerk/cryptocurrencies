@@ -22,7 +22,7 @@ abstract class AbstractHTMLService {
     $html = preg_replace("#<span[^>]+?>#", "", $html);
     $html = preg_replace("#</span>#", "", $html);
     $html = preg_replace("#</?(b|i|em|strong)>#", "", $html);
-    $html = preg_replace("#> *<#", "><", $html);
+    $html = preg_replace("#>\\s*<#", "><", $html);
 
     return $html;
   }

@@ -57,7 +57,7 @@ abstract class AbstractCoinplorerService extends AbstractHTMLService {
     if ($is_received) {
       $logger->info("We are looking for received balance.");
 
-      if (preg_match('#<tr><td>Total received:?</td><td>([0-9,\.]+) ' . $this->currency->getAbbr() . '#im', $html, $matches)) {
+      if (preg_match('#<tr><td>Total received:?</td><td>\\s*([0-9,\.]+) ' . $this->currency->getAbbr() . '#im', $html, $matches)) {
         $balance = str_replace(",", "", $matches[1]);
         $logger->info("Address balance: " . $balance);
       } else {
@@ -65,7 +65,7 @@ abstract class AbstractCoinplorerService extends AbstractHTMLService {
       }
 
     } else {
-      if (preg_match('#<tr><td>Final balance:?</td><td>([0-9,\.]+) ' . $this->currency->getAbbr() . '#im', $html, $matches)) {
+      if (preg_match('#<tr><td>Final balance:?</td><td>\\s*([0-9,\.]+) ' . $this->currency->getAbbr() . '#im', $html, $matches)) {
         $balance = str_replace(",", "", $matches[1]);
         $logger->info("Address balance: " . $balance);
       } else {
@@ -85,7 +85,7 @@ abstract class AbstractCoinplorerService extends AbstractHTMLService {
     $html = Fetch::get($url, $this->getCURLOptions());
     $html = $this->stripHTML($html);
 
-    if (preg_match('#<tr><td>Blocks:?</td><td>([0-9,\.]+)</td>#im', $html, $matches)) {
+    if (preg_match('#<tr><td>Blocks:?</td><td>\\s*([0-9,\.]+)</td>#im', $html, $matches)) {
       $value = str_replace(",", "", $matches[1]);
     } else {
       throw new BlockException("Could not find block count for currency '" . $this->currency->getCode() . "'");
@@ -102,7 +102,7 @@ abstract class AbstractCoinplorerService extends AbstractHTMLService {
     $html = Fetch::get($url, $this->getCURLOptions());
     $html = $this->stripHTML($html);
 
-    if (preg_match('#<tr><td>Difficulty:?</td><td>([0-9,\.]+)</td>#im', $html, $matches)) {
+    if (preg_match('#<tr><td>Difficulty:?</td><td>\\s*([0-9,\.]+)</td>#im', $html, $matches)) {
       $value = str_replace(",", "", $matches[1]);
     } else {
       throw new DifficultyException("Could not find difficulty for currency '" . $this->currency->getCode() . "'");
