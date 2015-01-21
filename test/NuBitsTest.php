@@ -20,11 +20,11 @@ class NuBitsTest extends AbstractCryptocurrencyTest {
   }
 
   function doTestBalance($balance) {
-    $this->assertEquals(0.2577, $balance);
+    $this->assertGreaterThan(0.25, $balance);
   }
 
   function doTestReceived($balance) {
-    $this->assertEquals(1659.0918, $balance);
+    $this->assertGreaterThan(1659.0918, $balance);
   }
 
   function testInvalidAddress() {

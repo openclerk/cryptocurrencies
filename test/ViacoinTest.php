@@ -20,11 +20,11 @@ class ViacoinTest extends AbstractCryptocurrencyTest {
   }
 
   function doTestBalance($balance) {
-    $this->assertEquals(190.78825257, $balance);
+    $this->assertGreaterThan(100, $balance);
   }
 
   function doTestReceived($balance) {
-    $this->assertEquals(256.28689524, $balance);
+    $this->assertGreaterThanOrEqual(256.28689524, $balance);
   }
 
 }
