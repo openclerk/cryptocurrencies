@@ -20,24 +20,7 @@ class HobonickelsTest extends AbstractCryptocurrencyTest {
   }
 
   function doTestBalance($balance) {
-    $this->assertEquals(0.140333, $balance);
-  }
-
-  function doTestReceived($balance) {
-    $this->assertEquals(1065.996373, $balance);
-  }
-
-  function getBalanceAtBlock() {
-    return 1116400;
-  }
-
-  function doTestBalanceAtBlock($balance) {
-    $this->assertEquals(0.140333 + 0.016472, $balance);
-  }
-
-  function testBalanceAtBlockZero() {
-    $balance = $this->currency->getBalanceAtBlock($this->getBalanceAddress(), 500000, $this->logger);
-    $this->assertEquals(0, $balance);
+    $this->assertEquals(0.14037, $balance);
   }
 
   function testInvalidAddress() {

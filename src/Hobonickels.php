@@ -14,7 +14,7 @@ use \Openclerk\Currencies\ReceivedCurrency;
  * Represents the Hobonickels cryptocurrency.
  */
 class Hobonickels extends Cryptocurrency
-  implements BlockCurrency, BlockBalanceableCurrency, DifficultyCurrency, ReceivedCurrency {
+  implements BlockCurrency, DifficultyCurrency {
 
   function getCode() {
     return "hbn";
@@ -48,15 +48,15 @@ class Hobonickels extends Cryptocurrency
   }
 
   function getExplorerName() {
-    return "Hobonickels Block Explorer";
+    return "Hobonickels Explorer";
   }
 
   function getExplorerURL() {
-    return "http://162.217.249.198:1080/";
+    return "http://hbn.cryptocoinexplorer.com/";
   }
 
   function getBalanceURL($address) {
-    return sprintf("http://162.217.249.198:1080/address/%s", urlencode($address));
+    return sprintf("http://hbn.cryptocoinexplorer.com/address?address=%s", urlencode($address));
   }
 
   /**
@@ -65,22 +65,6 @@ class Hobonickels extends Cryptocurrency
   function getBalance($address, Logger $logger) {
     $fetcher = new Services\HobonickelsExplorer();
     return $fetcher->getBalance($address, $logger);
-  }
-
-  /**
-   * @throws {@link BalanceException} if something happened and the balance could not be obtained.
-   */
-  function getReceived($address, Logger $logger) {
-    $fetcher = new Services\HobonickelsExplorer();
-    return $fetcher->getBalance($address, $logger, true);
-  }
-
-  /**
-   * @throws {@link BalanceException} if something happened and the balance could not be obtained.
-   */
-  function getBalanceAtBlock($address, $block, Logger $logger) {
-    $fetcher = new Services\HobonickelsExplorer();
-    return $fetcher->getBalanceAtBlock($address, $block, $logger);
   }
 
   function getBlockCount(Logger $logger) {
