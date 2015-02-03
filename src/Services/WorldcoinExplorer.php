@@ -32,7 +32,11 @@ class WorldcoinExplorer {
     $url = sprintf($this->url, urlencode($address));
     $logger->info($url);
 
-    $raw = Fetch::get($url);
+    try {
+      $raw = Fetch::get($url);
+    } catch (\Apis\FetchHttpException $e) {
+      throw new BalanceException($e->getContent(), $e);
+    }
     if (!$raw) {
       throw new BalanceException("Invalid address");
     }

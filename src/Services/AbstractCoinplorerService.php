@@ -50,7 +50,11 @@ abstract class AbstractCoinplorerService extends AbstractHTMLService {
     $url = sprintf($this->url, $address);
     $logger->info($url);
 
-    $html = Fetch::get($url, $this->getCURLOptions());
+    try {
+      $html = Fetch::get($url, $this->getCURLOptions());
+    } catch (\Apis\FetchHttpException $e) {
+      throw new BalanceException($e->getContent(), $e);
+    }
     $html = $this->stripHTML($html);
 
     // assumes that the page format will not change

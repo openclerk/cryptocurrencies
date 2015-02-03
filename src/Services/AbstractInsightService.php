@@ -5,6 +5,7 @@ namespace Cryptocurrency\Services;
 use \Monolog\Logger;
 use \Apis\Fetch;
 use \Apis\FetchException;
+use \Apis\FetchHttpException;
 use \Openclerk\Currencies\Currency;
 use \Openclerk\Currencies\BlockCurrency;
 use \Openclerk\Currencies\BalanceException;
@@ -36,8 +37,8 @@ abstract class AbstractInsightService {
     try {
       $text = Fetch::get($url);
       $result = Fetch::jsonDecode($text);
-    } catch (FetchException $e) {
-      if (preg_match("/invalid address/i", $text)) {
+    } catch (FetchHttpException $e) {
+      if (preg_match("/invalid address/i", $e->getContent())) {
         throw new BalanceException("Invalid address", $e);
       } else {
         throw new BalanceException($e->getMessage(), $e);

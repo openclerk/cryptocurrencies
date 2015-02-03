@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2fd20052f0264496b1300fc528026041",
+    "hash": "4547969be75efa33cfb4ab44dd21b514",
     "packages": [
         {
             "name": "monolog/monolog",
@@ -84,12 +84,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/openclerk/apis.git",
-                "reference": "fe3d437f56516bf4d0d4c0f286e35d78dbb04e35"
+                "reference": "c79431e01be0a45857aaeb061e310425fda07e85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openclerk/apis/zipball/fe3d437f56516bf4d0d4c0f286e35d78dbb04e35",
-                "reference": "fe3d437f56516bf4d0d4c0f286e35d78dbb04e35",
+                "url": "https://api.github.com/repos/openclerk/apis/zipball/c79431e01be0a45857aaeb061e310425fda07e85",
+                "reference": "c79431e01be0a45857aaeb061e310425fda07e85",
                 "shasum": ""
             },
             "require": {
@@ -97,6 +97,9 @@
             },
             "require-dev": {
                 "soundasleep/component-tests": "dev-master"
+            },
+            "suggest": {
+                "openclerk/cache": "For cacheable APIs"
             },
             "type": "library",
             "autoload": {
@@ -106,7 +109,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "A library for defining and using APIs",
-            "time": "2015-01-04 00:37:08"
+            "time": "2015-02-03 21:12:56"
         },
         {
             "name": "openclerk/config",
@@ -114,12 +117,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/openclerk/config.git",
-                "reference": "c86c7dc7567efbf406fd9ceb4252c80560e60bec"
+                "reference": "0c5c0335718c479050e9eba0df727447297927f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openclerk/config/zipball/c86c7dc7567efbf406fd9ceb4252c80560e60bec",
-                "reference": "c86c7dc7567efbf406fd9ceb4252c80560e60bec",
+                "url": "https://api.github.com/repos/openclerk/config/zipball/0c5c0335718c479050e9eba0df727447297927f1",
+                "reference": "0c5c0335718c479050e9eba0df727447297927f1",
                 "shasum": ""
             },
             "type": "library",
@@ -129,7 +132,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2014-12-08 02:13:51"
+            "time": "2015-01-21 01:56:33"
         },
         {
             "name": "openclerk/currencies",
@@ -137,12 +140,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/openclerk/currencies.git",
-                "reference": "20f8a7e5aca8a4a0469fb86244feadade6d4cd75"
+                "reference": "7fa73ee8f9c4da48158bff1e91c18adc84c650c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openclerk/currencies/zipball/20f8a7e5aca8a4a0469fb86244feadade6d4cd75",
-                "reference": "20f8a7e5aca8a4a0469fb86244feadade6d4cd75",
+                "url": "https://api.github.com/repos/openclerk/currencies/zipball/7fa73ee8f9c4da48158bff1e91c18adc84c650c8",
+                "reference": "7fa73ee8f9c4da48158bff1e91c18adc84c650c8",
                 "shasum": ""
             },
             "require": {
@@ -154,8 +157,8 @@
                     "Openclerk\\Currencies\\": "src"
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
-            "time": "2015-01-04 06:49:51"
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2015-01-22 02:36:33"
         },
         {
             "name": "psr/log",
@@ -265,16 +268,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "2.0.14",
+            "version": "2.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "ca158276c1200cc27f5409a5e338486bc0b4fc94"
+                "reference": "34cc484af1ca149188d0d9e91412191e398e0b67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/ca158276c1200cc27f5409a5e338486bc0b4fc94",
-                "reference": "ca158276c1200cc27f5409a5e338486bc0b4fc94",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/34cc484af1ca149188d0d9e91412191e398e0b67",
+                "reference": "34cc484af1ca149188d0d9e91412191e398e0b67",
                 "shasum": ""
             },
             "require": {
@@ -287,7 +290,7 @@
             },
             "require-dev": {
                 "ext-xdebug": ">=2.1.4",
-                "phpunit/phpunit": "~4.1"
+                "phpunit/phpunit": "~4"
             },
             "suggest": {
                 "ext-dom": "*",
@@ -306,9 +309,6 @@
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
-            "include-path": [
-                ""
-            ],
             "license": [
                 "BSD-3-Clause"
             ],
@@ -326,7 +326,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-12-26 13:28:33"
+            "time": "2015-01-24 10:06:35"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -463,16 +463,16 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "f8d5d08c56de5cfd592b3340424a81733259a876"
+                "reference": "db32c18eba00b121c145575fcbcd4d4d24e6db74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/f8d5d08c56de5cfd592b3340424a81733259a876",
-                "reference": "f8d5d08c56de5cfd592b3340424a81733259a876",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/db32c18eba00b121c145575fcbcd4d4d24e6db74",
+                "reference": "db32c18eba00b121c145575fcbcd4d4d24e6db74",
                 "shasum": ""
             },
             "require": {
@@ -485,7 +485,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -508,7 +508,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2014-08-31 06:12:13"
+            "time": "2015-01-17 09:51:32"
         },
         {
             "name": "phpunit/phpunit",
@@ -874,17 +874,17 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.6.1",
+            "version": "v2.6.4",
             "target-dir": "Symfony/Component/Yaml",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "3346fc090a3eb6b53d408db2903b241af51dcb20"
+                "reference": "60ed7751671113cf1ee7d7778e691642c2e9acd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/3346fc090a3eb6b53d408db2903b241af51dcb20",
-                "reference": "3346fc090a3eb6b53d408db2903b241af51dcb20",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/60ed7751671113cf1ee7d7778e691642c2e9acd8",
+                "reference": "60ed7751671113cf1ee7d7778e691642c2e9acd8",
                 "shasum": ""
             },
             "require": {
@@ -917,7 +917,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2014-12-02 20:19:20"
+            "time": "2015-01-25 04:39:26"
         }
     ],
     "aliases": [],

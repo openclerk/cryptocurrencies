@@ -38,7 +38,11 @@ abstract class AbstractNuExplorerService {
     $url = sprintf($this->url, $address);
     $logger->info($url);
 
-    $json = Fetch::jsonDecode(Fetch::get($url));
+    try {
+      $json = Fetch::jsonDecode(Fetch::get($url));
+    } catch (\Apis\FetchHttpException $e) {
+      throw new BalanceException($e->getContent(), $e);
+    }
     if (!$json['exists']) {
       throw new BalanceException("Address does not exist");
     }

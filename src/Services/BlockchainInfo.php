@@ -53,24 +53,28 @@ class BlockchainInfo {
       $url = url_add($url, array('api_code' => Config::get('blockchain_api_key')));
     }
 
-    $logger->info($url);
-    $balance = Fetch::get($url);
-    $divisor = 1e8;   // divide by 1e8 to get btc balance
+    try {
+      $logger->info($url);
+      $balance = Fetch::get($url);
+      $divisor = 1e8;   // divide by 1e8 to get btc balance
 
-    if (!is_numeric($balance)) {
-      $logger->error("Blockchain balance for " . htmlspecialchars($address) . " is non-numeric: " . htmlspecialchars($balance));
-      if ($balance == "Checksum does not validate") {
-        throw new BalanceException("Checksum does not validate");
+      if (!is_numeric($balance)) {
+        $logger->error("Blockchain balance for " . htmlspecialchars($address) . " is non-numeric: " . htmlspecialchars($balance));
+        if ($balance == "Checksum does not validate") {
+          throw new BalanceException("Checksum does not validate");
+        }
+        if (strpos($balance, "Maximum concurrent requests reached.") !== false) {
+          throw new BlockchainException("Maximum concurrent requests reached");
+        }
+        throw new BalanceException("Blockchain returned non-numeric balance: '" . htmlspecialchars($balance) . "'");
+      } else {
+        $logger->info("Blockchain balance for " . htmlspecialchars($address) . ": " . ($balance / $divisor));
       }
-      if (strpos($balance, "Maximum concurrent requests reached.") !== false) {
-        throw new BlockchainException("Maximum concurrent requests reached");
-      }
-      throw new BalanceException("Blockchain returned non-numeric balance: '" . htmlspecialchars($balance) . "'");
-    } else {
-      $logger->info("Blockchain balance for " . htmlspecialchars($address) . ": " . ($balance / $divisor));
+
+      return $balance / $divisor;
+    } catch (\Apis\FetchHttpException $e) {
+      throw new BalanceException($e->getContent(), $e);
     }
-
-    return $balance / $divisor;
   }
 
   /**

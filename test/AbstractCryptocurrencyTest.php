@@ -26,7 +26,7 @@ abstract class AbstractCryptocurrencyTest extends \PHPUnit_Framework_TestCase {
 
     Config::merge(array(
       $currency->getCode() . "_confirmations" => 6,
-      "get_contents_timeout" => 10,
+      "get_contents_timeout" => 30,
     ));
   }
 

@@ -67,7 +67,11 @@ abstract class AbstractAbeService extends AbstractHTMLService {
     // we can now request the HTML page
     $url = sprintf($this->url, $address);
     $logger->info($url);
-    $html = Fetch::get($url);
+    try {
+      $html = Fetch::get($url);
+    } catch (\Apis\FetchHttpException $e) {
+      throw new BalanceException($e->getContent(), $e);
+    }
     $html = $this->stripHTML($html);
 
     // assumes that the page format will not change
