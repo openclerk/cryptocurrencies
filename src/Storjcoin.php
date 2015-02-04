@@ -20,7 +20,7 @@ class Storjcoin extends Cryptocurrency {
   }
 
   function getName() {
-    return "Storjcoin";
+    return "StorjCoin";
   }
 
   function getAbbr() {
