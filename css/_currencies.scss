@@ -17,6 +17,7 @@ $currency-codes:
   "nxt",
   "ppc",
   "rdd",
+  "sj1",
   "trc",
   "via",
   "vrc",
@@ -44,6 +45,7 @@ $currency-codes:
   @if $code == "nxt" { background-image: url('../images/currencies/nxt.png'); }
   @if $code == "ppc" { background-image: url('../images/currencies/peercoin.png'); }
   @if $code == "rdd" { background-image: url('../images/currencies/reddcoin.png'); }
+  @if $code == "sj1" { background-image: url('../images/currencies/storjcoin.png'); }
   @if $code == "trc" { background-image: url('../images/currencies/terracoin.png'); }
   @if $code == "via" { background-image: url('../images/currencies/viacoin.png'); }
   @if $code == "vrc" { background-image: url('../images/currencies/vericoin.png'); }
@@ -60,7 +62,7 @@ $currency-codes:
   @if $code == "dog" { background-image: url('../images/explorers/dogechain.png'); }
   @if $code == "drk" { background-image: url('../images/explorers/darkcoin.png'); }
   @if $code == "ftc" { background-image: url('../images/explorers/feathercoin.png'); }
-  @if $code == "hbn" { background-image: url('../images/explorers/hobonickels.png'); }
+  @if $code == "hbn" { background-image: url('../images/explorers/cryptocoinexplorer.png'); }
   @if $code == "ixc" { background-image: url('../images/explorers/abe.png'); }
   @if $code == "ltc" { background-image: url('../images/explorers/abe.png'); }
   @if $code == "mec" { background-image: url('../images/explorers/blockr.png'); }
@@ -72,6 +74,7 @@ $currency-codes:
   @if $code == "nxt" { background-image: url('../images/explorers/mynxt.png'); }
   @if $code == "ppc" { background-image: url('../images/explorers/blockr.png'); }
   @if $code == "rdd" { background-image: url('../images/explorers/reddsight.png'); }
+  @if $code == "sj1" { background-image: url('../images/explorers/blockscan.png'); }
   @if $code == "trc" { background-image: url('../images/explorers/coinplorer.png'); }
   @if $code == "via" { background-image: url('../images/explorers/viacoin.png'); }
   @if $code == "vrc" { background-image: url('../images/explorers/chainz.png'); }
