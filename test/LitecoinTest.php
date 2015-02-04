@@ -46,6 +46,7 @@ class LitecoinTest extends AbstractCryptocurrencyTest {
       $this->fail("Expected failure");
     } catch (\Openclerk\Currencies\BalanceException $e) {
       $this->assertRegExp("/Not a valid address/i", $e->getMessage());
+      $this->assertNotRegExp("/</i", $e->getMessage(), "Should not have any HTML");
     }
   }
 
@@ -55,6 +56,7 @@ class LitecoinTest extends AbstractCryptocurrencyTest {
       $this->fail("Expected failure");
     } catch (\Openclerk\Currencies\BalanceException $e) {
       $this->assertRegExp("/Address not seen on the network/i", $e->getMessage());
+      $this->assertNotRegExp("/</i", $e->getMessage(), "Should not have any HTML");
     }
   }
 

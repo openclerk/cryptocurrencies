@@ -70,6 +70,15 @@ abstract class AbstractAbeService extends AbstractHTMLService {
     try {
       $html = Fetch::get($url);
     } catch (\Apis\FetchHttpException $e) {
+      // don't return raw HTML if we can find a valid error message
+      if (strpos($e->getContent(), "Not a valid address")) {
+        throw new BalanceException("Not a valid address", $e);
+      }
+      if (strpos($e->getContent(), "Address not seen on the network")) {
+        throw new BalanceException("Address not seen on the network", $e);
+      }
+
+      // otherwise, throw HTML as normal
       throw new BalanceException($e->getContent(), $e);
     }
     $html = $this->stripHTML($html);
