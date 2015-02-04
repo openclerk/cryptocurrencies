@@ -49,4 +49,13 @@ class LitecoinTest extends AbstractCryptocurrencyTest {
     }
   }
 
+  function testAddressNotSeen() {
+    try {
+      $balance = $this->currency->getBalance("LSja8VGwpDhhjVqkiZUPk2vDzQp6J8STa5", $this->logger);
+      $this->fail("Expected failure");
+    } catch (\Openclerk\Currencies\BalanceException $e) {
+      $this->assertRegExp("/Address not seen on the network/i", $e->getMessage());
+    }
+  }
+
 }
