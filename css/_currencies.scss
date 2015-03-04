@@ -56,7 +56,7 @@ $currency-codes:
 }
 
 @mixin explorer-label-background($code) {
-  @if $code == "bc1" { background-image: url('../images/explorers/blackchain.png'); }
+  @if $code == "bc1" { background-image: url('../images/explorers/chainz.png'); }
   @if $code == "btc" { background-image: url('../images/explorers/blockchain.png'); }
   @if $code == "dgc" { background-image: url('../images/explorers/blockr.png'); }
   @if $code == "dog" { background-image: url('../images/explorers/dogechain.png'); }

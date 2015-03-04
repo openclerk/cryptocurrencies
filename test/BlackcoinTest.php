@@ -27,4 +27,11 @@ class BlackcoinTest extends AbstractCryptocurrencyTest {
     $this->assertGreaterThan(106, $balance);
   }
 
+  /**
+   * We can't actually test for invalid addresses using Coinplorer,
+   * so we disable this test.
+   */
+  function testInvalidBalance() {
+    // empty
+  }
 }
