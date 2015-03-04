@@ -9,12 +9,13 @@ use \Openclerk\Currencies\BlockBalanceableCurrency;
 use \Openclerk\Currencies\DifficultyCurrency;
 use \Openclerk\Currencies\ConfirmableCurrency;
 use \Openclerk\Currencies\ReceivedCurrency;
+use \Openclerk\Currencies\HashableCurrency;
 
 /**
  * Represents the Bitcoin cryptocurrency.
  */
 class Bitcoin extends Cryptocurrency
-  implements BlockCurrency, DifficultyCurrency, ConfirmableCurrency, BlockBalanceableCurrency, ReceivedCurrency {
+  implements BlockCurrency, DifficultyCurrency, ConfirmableCurrency, BlockBalanceableCurrency, ReceivedCurrency, HashableCurrency {
 
   function getCode() {
     return "btc";
@@ -41,6 +42,14 @@ class Bitcoin extends Cryptocurrency
       return true;
     }
     return false;
+  }
+
+  /**
+   * Get the main algorithm used by this currency for hashing, as a
+   * code from {@link HashAlgorithm#getCode()}.
+   */
+  public function getAlgorithm() {
+    return "sha256";
   }
 
   function hasExplorer() {
