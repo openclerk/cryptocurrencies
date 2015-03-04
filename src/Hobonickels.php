@@ -15,7 +15,7 @@ use \Openclerk\Currencies\HashableCurrency;
  * Represents the Hobonickels cryptocurrency.
  */
 class Hobonickels extends Cryptocurrency
-  implements BlockCurrency, DifficultyCurrency {
+  implements BlockCurrency, DifficultyCurrency, HashableCurrency {
 
   function getCode() {
     return "hbn";
@@ -42,6 +42,14 @@ class Hobonickels extends Cryptocurrency
       return true;
     }
     return false;
+  }
+
+  /**
+   * Get the main algorithm used by this currency for hashing, as a
+   * code from {@link HashAlgorithm#getCode()}.
+   */
+  public function getAlgorithm() {
+    return "scrypt";
   }
 
   function hasExplorer() {

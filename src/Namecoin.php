@@ -15,7 +15,7 @@ use \Openclerk\Currencies\HashableCurrency;
  * Represents the Namecoin cryptocurrency.
  */
 class Namecoin extends Cryptocurrency
-  implements BlockCurrency, BlockBalanceableCurrency, DifficultyCurrency, ReceivedCurrency {
+  implements BlockCurrency, BlockBalanceableCurrency, DifficultyCurrency, ReceivedCurrency, HashableCurrency {
 
   function getCode() {
     return "nmc";
@@ -42,6 +42,14 @@ class Namecoin extends Cryptocurrency
       return true;
     }
     return false;
+  }
+
+  /**
+   * Get the main algorithm used by this currency for hashing, as a
+   * code from {@link HashAlgorithm#getCode()}.
+   */
+  public function getAlgorithm() {
+    return "sha256";
   }
 
   function hasExplorer() {

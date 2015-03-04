@@ -15,7 +15,7 @@ use \Openclerk\Currencies\HashableCurrency;
  * Represents the Digitalcoin cryptocurrency.
  */
 class Digitalcoin extends Cryptocurrency
-  implements BlockCurrency, DifficultyCurrency, ConfirmableCurrency, ReceivedCurrency {
+  implements BlockCurrency, DifficultyCurrency, ConfirmableCurrency, ReceivedCurrency, HashableCurrency {
 
   function getCode() {
     return "dgc";
@@ -42,6 +42,14 @@ class Digitalcoin extends Cryptocurrency
       return true;
     }
     return false;
+  }
+
+  /**
+   * Get the main algorithm used by this currency for hashing, as a
+   * code from {@link HashAlgorithm#getCode()}.
+   */
+  public function getAlgorithm() {
+    return "scrypt";
   }
 
   function hasExplorer() {

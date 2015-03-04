@@ -15,7 +15,7 @@ use \Openclerk\Currencies\HashableCurrency;
  * Represents the Terracoin cryptocurrency.
  */
 class Terracoin extends Cryptocurrency
-  implements BlockCurrency, DifficultyCurrency, ReceivedCurrency {
+  implements BlockCurrency, DifficultyCurrency, ReceivedCurrency, HashableCurrency {
 
   function getCode() {
     return "trc";
@@ -42,6 +42,14 @@ class Terracoin extends Cryptocurrency
       return true;
     }
     return false;
+  }
+
+  /**
+   * Get the main algorithm used by this currency for hashing, as a
+   * code from {@link HashAlgorithm#getCode()}.
+   */
+  public function getAlgorithm() {
+    return "sha256";
   }
 
   function hasExplorer() {

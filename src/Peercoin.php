@@ -15,7 +15,7 @@ use \Openclerk\Currencies\HashableCurrency;
  * Represents the Peercoin cryptocurrency.
  */
 class Peercoin extends Cryptocurrency
-  implements BlockCurrency, DifficultyCurrency, ConfirmableCurrency, ReceivedCurrency {
+  implements BlockCurrency, DifficultyCurrency, ConfirmableCurrency, ReceivedCurrency, HashableCurrency {
 
   function getCode() {
     return "ppc";
@@ -42,6 +42,14 @@ class Peercoin extends Cryptocurrency
       return true;
     }
     return false;
+  }
+
+  /**
+   * Get the main algorithm used by this currency for hashing, as a
+   * code from {@link HashAlgorithm#getCode()}.
+   */
+  public function getAlgorithm() {
+    return "sha256";
   }
 
   function hasExplorer() {

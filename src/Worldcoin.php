@@ -15,7 +15,7 @@ use \Openclerk\Currencies\HashableCurrency;
  * Represents the Worldcoin cryptocurrency.
  */
 class Worldcoin extends Cryptocurrency
-  implements BlockCurrency, DifficultyCurrency, ReceivedCurrency {
+  implements BlockCurrency, DifficultyCurrency, ReceivedCurrency, HashableCurrency {
 
   function getCode() {
     return "wdc";
@@ -42,6 +42,14 @@ class Worldcoin extends Cryptocurrency
       return true;
     }
     return false;
+  }
+
+  /**
+   * Get the main algorithm used by this currency for hashing, as a
+   * code from {@link HashAlgorithm#getCode()}.
+   */
+  public function getAlgorithm() {
+    return "scrypt";
   }
 
   function hasExplorer() {

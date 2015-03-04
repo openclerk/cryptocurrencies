@@ -15,7 +15,7 @@ use \Openclerk\Currencies\HashableCurrency;
  * Represents the Netcoin cryptocurrency.
  */
 class Netcoin extends Cryptocurrency
-  implements BlockCurrency, BlockBalanceableCurrency, DifficultyCurrency, ReceivedCurrency {
+  implements BlockCurrency, BlockBalanceableCurrency, DifficultyCurrency, ReceivedCurrency, HashableCurrency {
 
   function getCode() {
     return "net";
@@ -42,6 +42,14 @@ class Netcoin extends Cryptocurrency
       return true;
     }
     return false;
+  }
+
+  /**
+   * Get the main algorithm used by this currency for hashing, as a
+   * code from {@link HashAlgorithm#getCode()}.
+   */
+  public function getAlgorithm() {
+    return "scrypt";
   }
 
   function hasExplorer() {

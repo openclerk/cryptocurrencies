@@ -15,7 +15,7 @@ use \Openclerk\Currencies\HashableCurrency;
  * Represents the Novacoin cryptocurrency.
  */
 class Novacoin extends Cryptocurrency
-  implements BlockCurrency, DifficultyCurrency {
+  implements BlockCurrency, DifficultyCurrency, HashableCurrency {
 
   function getCode() {
     return "nvc";
@@ -42,6 +42,14 @@ class Novacoin extends Cryptocurrency
       return true;
     }
     return false;
+  }
+
+  /**
+   * Get the main algorithm used by this currency for hashing, as a
+   * code from {@link HashAlgorithm#getCode()}.
+   */
+  public function getAlgorithm() {
+    return "scrypt";
   }
 
   function hasExplorer() {

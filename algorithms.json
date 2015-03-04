@@ -1,3 +1,4 @@
 {
+  "scrypt": "\\Cryptocurrency\\Algorithms\\Scrypt",
   "sha256": "\\Cryptocurrency\\Algorithms\\SHA256"
 }

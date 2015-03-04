@@ -15,7 +15,7 @@ use \Openclerk\Currencies\HashableCurrency;
  * Represents the Dogecoin cryptocurrency.
  */
 class Dogecoin extends Cryptocurrency
-  implements BlockCurrency, BlockBalanceableCurrency, DifficultyCurrency, ReceivedCurrency {
+  implements BlockCurrency, BlockBalanceableCurrency, DifficultyCurrency, ReceivedCurrency, HashableCurrency {
 
   function getCode() {
     return "dog";
@@ -46,6 +46,14 @@ class Dogecoin extends Cryptocurrency
       return true;
     }
     return false;
+  }
+
+  /**
+   * Get the main algorithm used by this currency for hashing, as a
+   * code from {@link HashAlgorithm#getCode()}.
+   */
+  public function getAlgorithm() {
+    return "scrypt";
   }
 
   function hasExplorer() {
