@@ -9,6 +9,7 @@ use \Openclerk\Currencies\BlockBalanceableCurrency;
 use \Openclerk\Currencies\DifficultyCurrency;
 use \Openclerk\Currencies\ConfirmableCurrency;
 use \Openclerk\Currencies\ReceivedCurrency;
+use \Openclerk\Currencies\HashableCurrency;
 
 /**
  * Represents the Namecoin cryptocurrency.
