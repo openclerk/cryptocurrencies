@@ -84,12 +84,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/openclerk/apis.git",
-                "reference": "c79431e01be0a45857aaeb061e310425fda07e85"
+                "reference": "6208709cc4bd79893bdb07e6f2e04b103e7bb184"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openclerk/apis/zipball/c79431e01be0a45857aaeb061e310425fda07e85",
-                "reference": "c79431e01be0a45857aaeb061e310425fda07e85",
+                "url": "https://api.github.com/repos/openclerk/apis/zipball/6208709cc4bd79893bdb07e6f2e04b103e7bb184",
+                "reference": "6208709cc4bd79893bdb07e6f2e04b103e7bb184",
                 "shasum": ""
             },
             "require": {
@@ -109,7 +109,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "A library for defining and using APIs",
-            "time": "2015-02-03 21:12:56"
+            "time": "2015-03-04 01:22:43"
         },
         {
             "name": "openclerk/config",
