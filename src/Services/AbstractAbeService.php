@@ -181,7 +181,7 @@ abstract class AbstractAbeService extends AbstractHTMLService {
     $url = $this->block_url;
 
     $logger->info($url);
-    $value = Fetch::get($url);
+    $value = (int) Fetch::get($url);
     $logger->info("Block count: " . number_format($value));
     return $value;
   }
@@ -194,8 +194,8 @@ abstract class AbstractAbeService extends AbstractHTMLService {
     $url = $this->difficulty_url;
 
     $logger->info($url);
-    $value = Fetch::get($url);
-    $logger->info("Difficulty: " . number_format($value));
+    $value = (float) Fetch::get($url);
+    $logger->info("Difficulty: " . number_format($value, 6));
     return $value;
   }
 
