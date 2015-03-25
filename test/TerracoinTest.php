@@ -20,7 +20,7 @@ class TerracoinTest extends AbstractCryptocurrencyTest {
   }
 
   function doTestBalance($balance) {
-    $this->assertEquals(404971.68357502, $balance);
+    $this->assertEquals(0, $balance);
   }
 
   function doTestReceived($balance) {
