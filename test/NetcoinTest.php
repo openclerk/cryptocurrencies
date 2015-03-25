@@ -44,4 +44,8 @@ class NetcoinTest extends AbstractCryptocurrencyTest {
     }
   }
 
+  function expectedDifficulty() {
+    // NET seems to be a dead currency
+    return 0.001;
+  }
 }
