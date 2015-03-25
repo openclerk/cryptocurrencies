@@ -121,4 +121,12 @@ abstract class AbstractCryptocurrencyTest extends \PHPUnit_Framework_TestCase {
     }
   }
 
+  /**
+   * Test that all URLs returned by {@link Currency#getBalanceURL()} are valid URLs and
+   * can be fetched with a GET.
+   */
+  function testValidPublicAddress() {
+    $html = \Apis\Fetch::get($this->currency->getBalanceURL($this->getBalanceAddress()));
+  }
+
 }
