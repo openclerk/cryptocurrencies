@@ -48,23 +48,27 @@ class Primecoin extends Cryptocurrency
     return true;
   }
 
+  function getService() {
+    return new Services\PrimecoinExplorer();
+  }
+
   function getExplorerName() {
-    return "Coinplorer";
+    return $this->getService()->getExplorerName();
   }
 
   function getExplorerURL() {
-    return "https://coinplorer.com/XPM";
+    return $this->getService()->getExplorerURL();
   }
 
   function getBalanceURL($address) {
-    return sprintf("https://coinplorer.com/XPM/Addresses/%s", urlencode($address));
+    return $this->getService()->getBalanceURL($address);
   }
 
   /**
    * @throws {@link BalanceException} if something happened and the balance could not be obtained.
    */
   function getBalance($address, Logger $logger) {
-    $fetcher = new Services\PrimecoinExplorer();
+    $fetcher = $this->getService();
     return $fetcher->getBalance($address, $logger);
   }
 
@@ -72,17 +76,17 @@ class Primecoin extends Cryptocurrency
    * @throws {@link BalanceException} if something happened and the balance could not be obtained.
    */
   function getReceived($address, Logger $logger) {
-    $fetcher = new Services\PrimecoinExplorer();
+    $fetcher = $this->getService();
     return $fetcher->getBalance($address, $logger, true);
   }
 
   function getBlockCount(Logger $logger) {
-    $fetcher = new Services\PrimecoinExplorer();
+    $fetcher = $this->getService();
     return $fetcher->getBlockCount($logger);
   }
 
   function getDifficulty(Logger $logger) {
-    $fetcher = new Services\PrimecoinExplorer();
+    $fetcher = $this->getService();
     return $fetcher->getDifficulty($logger);
   }
 

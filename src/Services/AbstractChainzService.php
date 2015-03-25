@@ -72,4 +72,16 @@ abstract class AbstractChainzService {
     return $value;
   }
 
+  function getExplorerName() {
+    return "Chainz";
+  }
+
+  function getExplorerURL() {
+    return "https://chainz.cryptoid.info/";
+  }
+
+  function getBalanceURL($address) {
+    return sprintf("https://chainz.cryptoid.info/" . urlencode($this->currency->getCode()) . "/address.dws?%s.htm", urlencode($address));
+  }
+
 }

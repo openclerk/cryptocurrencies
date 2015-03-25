@@ -116,4 +116,16 @@ abstract class AbstractCoinplorerService extends AbstractHTMLService {
     return $value;
   }
 
+  function getExplorerName() {
+    return "Coinplorer";
+  }
+
+  function getExplorerURL() {
+    return "https://coinplorer.com/";
+  }
+
+  function getBalanceURL($address) {
+    return sprintf("https://coinplorer.com/" . $this->currency->getCode() . "/Addresses/%s", urlencode($address));
+  }
+
 }

@@ -52,23 +52,27 @@ class Blackcoin extends Cryptocurrency
     return true;
   }
 
+  function getService() {
+    return new Services\BlackcoinExplorer();
+  }
+
   function getExplorerName() {
-    return "Chainz";
+    return $this->getService()->getExplorerName();
   }
 
   function getExplorerURL() {
-    return "https://chainz.cryptoid.info/";
+    return $this->getService()->getExplorerURL();
   }
 
   function getBalanceURL($address) {
-    return sprintf("https://chainz.cryptoid.info/blk/address.dws?%s.htm", urlencode($address));
+    return $this->getService()->getBalanceURL($address);
   }
 
   /**
    * @throws {@link BalanceException} if something happened and the balance could not be obtained.
    */
   function getBalance($address, Logger $logger) {
-    $fetcher = new Services\BlackcoinExplorer();
+    $fetcher = $this->getService();
     return $fetcher->getBalance($address, $logger);
   }
 
@@ -76,17 +80,17 @@ class Blackcoin extends Cryptocurrency
    * @throws {@link BalanceException} if something happened and the balance could not be obtained.
    */
   function getReceived($address, Logger $logger) {
-    $fetcher = new Services\BlackcoinExplorer();
+    $fetcher = $this->getService();
     return $fetcher->getBalance($address, $logger, true);
   }
 
   function getBlockCount(Logger $logger) {
-    $fetcher = new Services\BlackcoinExplorer();
+    $fetcher = $this->getService();
     return $fetcher->getBlockCount($logger);
   }
 
   function getDifficulty(Logger $logger) {
-    $fetcher = new Services\BlackcoinExplorer();
+    $fetcher = $this->getService();
     return $fetcher->getDifficulty($logger);
   }
 

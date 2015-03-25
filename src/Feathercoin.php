@@ -56,23 +56,27 @@ class Feathercoin extends Cryptocurrency
     return true;
   }
 
+  function getService() {
+    return new Services\FeathercoinExplorer();
+  }
+
   function getExplorerName() {
-    return "Coinplorer";
+    return $this->getService()->getExplorerName();
   }
 
   function getExplorerURL() {
-    return "https://coinplorer.com/FTC";
+    return $this->getService()->getExplorerURL();
   }
 
   function getBalanceURL($address) {
-    return sprintf("https://coinplorer.com/FTC/Addresses/%s", urlencode($address));
+    return $this->getService()->getBalanceURL($address);
   }
 
   /**
    * @throws {@link BalanceException} if something happened and the balance could not be obtained.
    */
   function getBalance($address, Logger $logger) {
-    $fetcher = new Services\FeathercoinExplorer();
+    $fetcher = $this->getService();
     return $fetcher->getBalance($address, $logger);
   }
 
@@ -80,17 +84,17 @@ class Feathercoin extends Cryptocurrency
    * @throws {@link BalanceException} if something happened and the balance could not be obtained.
    */
   function getReceived($address, Logger $logger) {
-    $fetcher = new Services\FeathercoinExplorer();
+    $fetcher = $this->getService();
     return $fetcher->getBalance($address, $logger, true);
   }
 
   function getBlockCount(Logger $logger) {
-    $fetcher = new Services\FeathercoinExplorer();
+    $fetcher = $this->getService();
     return $fetcher->getBlockCount($logger);
   }
 
   function getDifficulty(Logger $logger) {
-    $fetcher = new Services\FeathercoinExplorer();
+    $fetcher = $this->getService();
     return $fetcher->getDifficulty($logger);
   }
 
