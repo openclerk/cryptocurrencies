@@ -33,10 +33,11 @@ class VericoinTest extends AbstractCryptocurrencyTest {
   }
 
   /**
-   * We can't actually test for invalid addresses using Coinplorer,
+   * We can't actually test for invalid addresses using Chainz,
    * so we disable this test.
    */
   function testInvalidBalance() {
-    // empty
+    $this->assertEquals("Chainz", $this->currency->getExplorerName());
   }
+
 }

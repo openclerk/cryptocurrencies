@@ -32,13 +32,12 @@ class PrimecoinTest extends AbstractCryptocurrencyTest {
    * so we disable this test.
    */
   function testInvalidBalance() {
-    // empty
+    $this->assertEquals("Coinplorer", $this->currency->getExplorerName());
   }
 
   function testZeroBalance() {
     $balance = $this->currency->getBalance("AUqro6Zi6KVJA43CA73ZWYrvagUUGZFD1A", $this->logger);
     $this->assertEquals(0, $balance);
   }
-
 
 }

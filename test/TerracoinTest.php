@@ -32,6 +32,6 @@ class TerracoinTest extends AbstractCryptocurrencyTest {
    * so we disable this test.
    */
   function testInvalidBalance() {
-    // empty
+    $this->assertEquals("Coinplorer", $this->currency->getExplorerName());
   }
 }

@@ -27,4 +27,12 @@ class ViacoinTest extends AbstractCryptocurrencyTest {
     $this->assertGreaterThanOrEqual(256.28689524, $balance);
   }
 
+  /**
+   * We can't actually test for invalid addresses using Chainz,
+   * so we disable this test.
+   */
+  function testInvalidBalance() {
+    $this->assertEquals("Chainz", $this->currency->getExplorerName());
+  }
+
 }

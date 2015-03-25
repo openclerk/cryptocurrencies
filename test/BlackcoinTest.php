@@ -32,6 +32,7 @@ class BlackcoinTest extends AbstractCryptocurrencyTest {
    * so we disable this test.
    */
   function testInvalidBalance() {
-    // empty
+    $this->assertEquals("Chainz", $this->currency->getExplorerName());
   }
+
 }
