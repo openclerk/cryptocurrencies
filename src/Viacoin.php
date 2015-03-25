@@ -49,15 +49,15 @@ class Viacoin extends Cryptocurrency
   }
 
   function getExplorerName() {
-    return "Viacoin Explorer";
+    return "Chainz";
   }
 
   function getExplorerURL() {
-    return "http://explorer.viacoin.org/";
+    return "https://chainz.cryptoid.info/";
   }
 
   function getBalanceURL($address) {
-    return sprintf("http://explorer.viacoin.org/address/%s", urlencode($address));
+    return sprintf("https://chainz.cryptoid.info/via/address.dws?%s.htm", urlencode($address));
   }
 
   /**
