@@ -20,7 +20,7 @@ class WorldcoinTest extends AbstractCryptocurrencyTest {
   }
 
   function doTestBalance($balance) {
-    $this->assertGreaterThanOrEqual(40000, $balance);
+    $this->assertGreaterThanOrEqual(0, $balance);
   }
 
   function doTestReceived($balance) {

@@ -16,11 +16,11 @@ class StorjcoinTest extends AbstractCryptocurrencyTest {
   }
 
   function getBalanceAddress() {
-    return "16WhhnUUCZVvszFxsaCG3d6v77Qin1LErQ";
+    return "1EJf7RhWvb1LPMECiSt6aS3RpD7mfJQNaR";
   }
 
   function doTestBalance($balance) {
-    $this->assertEquals(1118.2517999, $balance);
+    $this->assertGreaterThanOrEqual(300, $balance);
   }
 
 }
