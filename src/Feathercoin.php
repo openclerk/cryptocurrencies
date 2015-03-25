@@ -57,15 +57,15 @@ class Feathercoin extends Cryptocurrency
   }
 
   function getExplorerName() {
-    return "Feathercoin Explorer";
+    return "Coinplorer";
   }
 
   function getExplorerURL() {
-    return "http://explorer.feathercoin.com/";
+    return "https://coinplorer.com/FTC";
   }
 
   function getBalanceURL($address) {
-    return sprintf("http://explorer.feathercoin.com/address/%s", urlencode($address));
+    return sprintf("https://coinplorer.com/FTC/Addresses/%s", urlencode($address));
   }
 
   /**

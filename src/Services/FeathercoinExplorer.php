@@ -7,14 +7,14 @@ use \Openclerk\Config;
 /**
  * Represents something that can fetch Feathercoin statistics.
  *
- * TODO it may be possible to do confirmations: see e.g. http://explorer.feathercoin.com/api/txs?address=71teELdzSy6hUzWwo1281wGixDUrcRmYNG&pageNum=0
+ * TODO it may be possible to do confirmations
  */
-class FeathercoinExplorer extends AbstractInsightService {
+class FeathercoinExplorer extends AbstractCoinplorerService {
 
   function __construct() {
     parent::__construct(new \Cryptocurrency\Feathercoin(), array(
-      "url" => "http://explorer.feathercoin.com/api/addr/%s/?noTxList=1",
-      "info_url" => "http://explorer.feathercoin.com/api/status?q=getInfo",
+      "url" => "https://coinplorer.com/FTC/Addresses/%s",
+      "info_url" => "https://coinplorer.com/FTC",
     ));
   }
 

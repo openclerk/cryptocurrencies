@@ -27,4 +27,16 @@ class FeathercoinTest extends AbstractCryptocurrencyTest {
     $this->assertEquals(16.27820373, $balance);
   }
 
+  /**
+   * We can't actually test for invalid addresses using Coinplorer,
+   * so we disable this test.
+   */
+  function testInvalidBalance() {
+    // empty
+  }
+
+  function expectedDifficulty() {
+    return 2;
+  }
+
 }
