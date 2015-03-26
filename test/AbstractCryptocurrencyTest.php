@@ -126,7 +126,9 @@ abstract class AbstractCryptocurrencyTest extends \PHPUnit_Framework_TestCase {
    * can be fetched with a GET.
    */
   function testValidPublicAddress() {
-    $html = \Apis\Fetch::get($this->currency->getBalanceURL($this->getBalanceAddress()));
+    $url = $this->currency->getBalanceURL($this->getBalanceAddress());
+    $this->logger->info($url);
+    $html = \Apis\Fetch::get($url);
   }
 
 }
