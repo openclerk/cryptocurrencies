@@ -65,11 +65,11 @@ class Dogecoin extends Cryptocurrency
   }
 
   function getExplorerURL() {
-    return "http://dogechain.info/";
+    return "https://dogechain.info/";
   }
 
   function getBalanceURL($address) {
-    return sprintf("http://dogechain.info/address/%s", urlencode($address));
+    return sprintf("https://dogechain.info/address/%s", urlencode($address));
   }
 
   /**

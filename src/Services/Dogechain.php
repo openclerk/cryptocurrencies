@@ -9,9 +9,9 @@ class Dogechain extends AbstractAbeService {
 
   function __construct() {
     parent::__construct(new \Cryptocurrency\Dogecoin(), array(
-      "url" => "http://dogechain.info/address/%s",
-      "block_url" => "http://dogechain.info/chain/Dogecoin/q/getblockcount",
-      "difficulty_url" => "http://dogechain.info/chain/Dogecoin/q/getdifficulty",
+      "url" => "https://dogechain.info/address/%s",
+      "block_url" => "https://dogechain.info/chain/Dogecoin/q/getblockcount",
+      "difficulty_url" => "https://dogechain.info/chain/Dogecoin/q/getdifficulty",
       "confirmations" => 6,
     ));
   }
