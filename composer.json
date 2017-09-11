@@ -8,9 +8,9 @@
     }
   },
   "require": {
-    "openclerk/config": "dev-master",
-    "openclerk/currencies": "dev-master",
-    "openclerk/apis": "dev-master",
+    "openclerk/config": "^0.1",
+    "openclerk/currencies": "^0.1",
+    "openclerk/apis": "^0.1",
     "monolog/monolog": "~1.11",
     "php": ">=5.4.6"
   },
