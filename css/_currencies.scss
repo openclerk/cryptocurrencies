@@ -4,6 +4,7 @@ $currency-codes:
   "dgc",
   "dog",
   "drk",
+  "eth",
   "ftc",
   "hbn",
   "ixc",
@@ -32,6 +33,7 @@ $currency-codes:
   @if $code == "dgc" { background-image: url('../images/currencies/digitalcoin.png'); }
   @if $code == "dog" { background-image: url('../images/currencies/dogecoin.png'); }
   @if $code == "drk" { background-image: url('../images/currencies/darkcoin.png'); }
+  @if $code == "eth" { background-image: url('../images/currencies/ethereum.png'); }
   @if $code == "ftc" { background-image: url('../images/currencies/feathercoin.png'); }
   @if $code == "hbn" { background-image: url('../images/currencies/hobonickels.png'); }
   @if $code == "ixc" { background-image: url('../images/currencies/ixcoin.png'); }
@@ -61,6 +63,7 @@ $currency-codes:
   @if $code == "dgc" { background-image: url('../images/explorers/blockr.png'); }
   @if $code == "dog" { background-image: url('../images/explorers/dogechain.png'); }
   @if $code == "drk" { background-image: url('../images/explorers/darkcoin.png'); }
+  @if $code == "eth" { background-image: url('../images/explorers/etherscan.png'); }
   @if $code == "ftc" { background-image: url('../images/explorers/feathercoin.png'); }
   @if $code == "hbn" { background-image: url('../images/explorers/cryptocoinexplorer.png'); }
   @if $code == "ixc" { background-image: url('../images/explorers/abe.png'); }

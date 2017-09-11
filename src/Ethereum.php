@@ -35,9 +35,8 @@ class Ethereum extends Cryptocurrency {
   }
 
   function isValid($address) {
-    // based on is_valid_btc_address
-    if (strlen($address) >= 41 && strlen($address) <= 45
-        && preg_match("#^0x[a-f0-9]+$#i", $address)) {
+    if (strlen($address) >= 40 && strlen($address) <= 45
+        && preg_match("#^0x[0-9a-f]+$#i", $address)) {
       return true;
     }
     return false;
@@ -52,11 +51,11 @@ class Ethereum extends Cryptocurrency {
   }
 
   function getExplorerName() {
-    return $this->getService()->getExplorerName();
+    return "Etherscan.io";
   }
 
   function getExplorerURL() {
-    return $this->getService()->getExplorerURL();
+    return "https://etherscan.io";
   }
 
   function getBalanceURL($address) {
